@@ -1,10 +1,13 @@
 function setup() {
-    createCanvas(1000,500);
+    createCanvas(windowWidth,windowHeight);
     system = new System(mouseX, mouseY);
     background(51);
     detached = [];
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
 
 function draw() {
     system.run(mouseX, mouseY);
