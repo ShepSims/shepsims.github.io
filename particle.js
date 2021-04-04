@@ -34,8 +34,9 @@ Particle.prototype.update = function() {
     
     
     
-    
-    this.mass += 0.05;
+    if (this.mass<5){
+        this.mass += 0.05;
+    }
 };
 
 

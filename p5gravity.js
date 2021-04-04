@@ -32,4 +32,7 @@ function keyPressed() {
     if (key =='c'){
         background(0);
     }
+    if (key == 's'){
+        save('drawing.jpg');
+    }
 }
