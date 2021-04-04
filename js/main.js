@@ -51,12 +51,9 @@ Hero.prototype.jump = function () {
 
     if (firstJump) {
         this.body.velocity.y = -JUMP_SPEED;
-        this.prototype.can
     }
-    else if ()
-    if firstJump
 
-    return canJump;
+    return true;
 };
 
 Hero.prototype.bounce = function () {
@@ -141,7 +138,7 @@ function Fly(game, x, y){
     this.spawnx = x;
     this.spawny = y;
     this.moving = 'up';
-    this.count = lop34 0;
+    this.count = 0;
     
     //anchor
     this.anchor.set(1.5);
@@ -170,10 +167,10 @@ Fly.prototype.update = function () {
         this.body.velocity.y += 10;
         this.count +=1;
     }
-    else if (this.moving == 'up' &&900;
+    else if (this.moving == 'up'){
         this.count+=1;
     }
-    else {
+    else{
         this.count = 0;
         if (this.moving == 'up') {
             this.moving = 'down';
@@ -481,7 +478,7 @@ State._onHeroVsDoor = function (hero, door) {
 };
 
 // ==========================
-// entry point 
+// Entry Point for game
 // ==========================
 
 window.onload = function () {
