@@ -49,17 +49,18 @@ Particle.prototype.update = function() {
 
 
 Particle.prototype.display = function() {
+    stroke(255-BACKGROUND);
+    fill(255-BACKGROUND);
     if (this.type == 'dot'){
-        stroke(0);
+        
         ellipse(this.position.x, this.position.y, this.mass, this.mass);
     }
     else if(this.type == 'line'){
-        strokeWeight(10);
-        stroke(0);
+        strokeWeight(1);
         line(this.previousPosition.x, this.previousPosition.y, this.position.x, this.position.y)
     }
     else if(this.system.trace == false){
-        background(255);
+        background(BACKGROUND);
     }
   
 };

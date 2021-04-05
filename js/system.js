@@ -22,7 +22,7 @@ let System = function(x, y){
 
 System.prototype.run = function() {
     if (this.trace == false) {
-        background(0);
+        background(BACKGROUND);
     }
     this.position.x = mouseX;
     this.position.y = mouseY;
@@ -40,7 +40,7 @@ System.prototype.addParticle = function() {
 
 System.prototype.popParticle = function() {
     if (this.particles.length > 0) {
-    popped = this.particles.pop();
+        this.particles.shift();    
     }
 };
 

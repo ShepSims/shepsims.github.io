@@ -2,8 +2,9 @@ function setup() {
     createCanvas(windowWidth,windowHeight);
     system = new System(mouseX, mouseY);
     background(0);
-    stroke(255);
     detached = [];
+    BACKGROUND = 0;
+    stroke(255-BACKGROUND);
     play = true;
 }
 
@@ -52,6 +53,11 @@ function keyPressed() {
         play=!play;
     }
     if (key == 'b'){
-        system = new System(mouseX, mouseY);
+        if (BACKGROUND == 0){
+            BACKGROUND = 255;
+        }
+        else {
+            BACKGROUND = 0;
+        }
     }
 }
