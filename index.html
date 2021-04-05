@@ -1,11 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sheps Homepage</title>
+    <title>Welcome to Gravity</title>
   </head>
-  <body>
-    ...
-    <a href="html/gravity.html">Gravity</a>
-    ...
-  </body>
+<body>
+  <div class="container">
+      <img src="src/drawing.jpg" alt="drawing" style="width:100%;">
+      <div class="centered">Gravity</div>
+    </div>
+    <meta http-equiv = "refresh" content = "3; url = html/gravity.html" />
+      </body>
 </html>
+<style>
+body {
+    position: fixed;
+    height: 100%;
+    color:black;
+    font-size: 500px;
+}
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.centered {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+}
+</style>

@@ -1,11 +1,19 @@
 function setup() {
-    createCanvas(windowWidth,windowHeight);
+    canvas = createCanvas(windowWidth,windowHeight);
+    canvas.position(0,0);
     system = new System(mouseX, mouseY);
     background(0);
-    detached = [];
     BACKGROUND = 0;
     stroke(255-BACKGROUND);
     play = true;
+    
+    controls = "\nleft/right to add or pop particles\n\
+up/down to increase/decrease gravity\n \
+l to draw lines\n \
+d to draw dots\n \
+t to turn trace off\n \
+c to clean the sketchboard\n \
+s to save \ "
 }
 
 function windowResized() {
@@ -15,6 +23,7 @@ function windowResized() {
 function draw() {
     system.run();
 }
+
 
 function keyPressed() {
     if (keyCode == LEFT_ARROW) {
@@ -48,8 +57,13 @@ function keyPressed() {
         system.trace = !system.trace;
     }
     if (key == 'p'){
-        if (play){noLoop();}
-        else{loop();}
+        if (play){
+            noLoop();
+            alert(controls);
+        }
+        else{
+            loop();
+        }
         play=!play;
     }
     if (key == 'b'){
@@ -60,4 +74,10 @@ function keyPressed() {
             BACKGROUND = 0;
         }
     }
-}
+    if (key == "q"){
+        window.location.href = "../html/examples.html";
+    }
+    if (key == 'r'){
+        system = new System(mouseX, mouseY);
+    }
+    }
