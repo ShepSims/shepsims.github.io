@@ -74,6 +74,9 @@ function keyPressed() {
             BACKGROUND = 0;
         }
     }
+    if (key == 'z'){
+        system.sticks = !system.sticks;
+    }
     if (key == "q"){
         window.location.href = "../html/examples.html";
     }

@@ -7,6 +7,7 @@ let System = function(x, y){
     this.gravityType = true;
     this.trace = false;
     this.detached = false;
+    this.sticks = false;
     
     this.position=createVector(x,y);
     this.velocity = createVector(0,0);

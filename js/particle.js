@@ -57,7 +57,12 @@ Particle.prototype.display = function() {
     }
     else if(this.type == 'line'){
         strokeWeight(1);
-        line(this.previousPosition.x, this.previousPosition.y, this.position.x, this.position.y)
+        if (!this.system.sticks){
+            line(this.previousPosition.x, this.previousPosition.y, this.position.x, this.position.y);
+        }
+        else{
+            line(this.position.x, this.position.y, this.position.x+this.mass, this.position.y);
+        }
     }
     else if(this.system.trace == false){
         background(BACKGROUND);
