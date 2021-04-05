@@ -15,6 +15,7 @@ t - keep tracers<br>
 l - new particles are line type<br>
 d - new particles are dot type<br>
 z - line particles leave dashes<br>
+b - invert colors<br>
 g - invert gravity<br><br>
 s - saves sketch as jpg<br><br>
 p - play/pause menu<br><br>
