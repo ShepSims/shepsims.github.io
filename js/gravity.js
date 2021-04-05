@@ -1,3 +1,4 @@
+window.location.hash = "gravity";
 function setup() {
     canvas = createCanvas(windowWidth,windowHeight);
     canvas.position(0,0);
