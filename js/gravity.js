@@ -8,13 +8,19 @@ function setup() {
     stroke(255-BACKGROUND);
     play = true;
     
-    controls = "\nleft/right to add or pop particles\n\
-up/down to increase/decrease gravity\n \
-l to draw lines\n \
-d to draw dots\n \
-t to turn trace off\n \
-c to clean the sketchboard\n \
-s to save \ "
+    controls = "     \
+left/right - add/pop particle\n     \
+up/down - increase/decrease growthRate\n     \
+l - draw lines\n     \
+d - draw dots\n     \
+t - toggle trace\n     \
+c - clean the sketchboard\n     \
+s - save\n     \
+p - play/pause\n     \
+b - invert\n     \
+z - line dashes\n     \
+q - quit to examples\n     \
+r - reset"
 }
 
 function windowResized() {
