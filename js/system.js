@@ -12,7 +12,7 @@ let System = function(x, y){
     this.velocity = createVector(0,0);
     this.acceleration = createVector(0,0);
     this.mass = 0;
-    
+    this.growthRate = .01;
            
     this.particles = [];
   
@@ -41,7 +41,6 @@ System.prototype.addParticle = function() {
 System.prototype.popParticle = function() {
     if (this.particles.length > 0) {
     popped = this.particles.pop();
-    popped.explode();
     }
 };
 

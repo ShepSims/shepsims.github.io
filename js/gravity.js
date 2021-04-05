@@ -2,6 +2,7 @@ function setup() {
     createCanvas(windowWidth,windowHeight);
     system = new System(mouseX, mouseY);
     background(0);
+    stroke(255);
     detached = [];
     play = true;
 }
