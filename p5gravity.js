@@ -1,8 +1,9 @@
 function setup() {
     createCanvas(windowWidth,windowHeight);
     system = new System(mouseX, mouseY);
-    background(51);
+    background(0);
     detached = [];
+    play = true;
 }
 
 function windowResized() {
@@ -10,7 +11,7 @@ function windowResized() {
 }
 
 function draw() {
-    system.run(mouseX, mouseY);
+    system.run();
 }
 
 function keyPressed() {
@@ -21,21 +22,35 @@ function keyPressed() {
         system.addParticle();
     }
     if (keyCode == DOWN_ARROW) {
-        system.gravity += 0.001;
+        system.growthRate -= 0.1;
     }
     if (keyCode == UP_ARROW) {
-        system.gravtiy -= 0.001;
+        system.growthRate += 0.1;
     }
     if (key == 'l'){
-        system.trace = true;
+        system.type = 'line';
     }
     if (key =='d'){
-        system.trace = false;
+        system.type = 'dot';
     }
     if (key =='c'){
         background(0);
     }
     if (key == 's'){
         save('drawing.jpg');
+    }
+    if (key == 'g'){
+        system.gravityType = !system.gravityType
+    }
+    if (key == 't'){
+        system.trace = !system.trace;
+    }
+    if (key == 'p'){
+        if (play){noLoop();}
+        else{loop();}
+        play=!play;
+    }
+    if (key == 'b'){
+        system = new System(mouseX, mouseY);
     }
 }
