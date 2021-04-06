@@ -8,6 +8,7 @@ let System = function(x, y){
     this.trace = false;
     this.detached = false;
     this.sticks = false;
+    this.connected = false;
     
     this.position=createVector(x,y);
     this.velocity = createVector(0,0);
@@ -28,12 +29,37 @@ System.prototype.run = function() {
     this.position.x = mouseX;
     this.position.y = mouseY;
     for (let i =  this.particles.length-1; i >= 0; i--) {
-    let particle = this.particles[i];
-    particle.update();
-    particle.display();
-    this.mass += particle.mass;
-   this.mass/=this.particles.length/5;
-  }};
+      let particle = this.particles[i];
+       particle.update();
+      particle.display();
+     this.mass += particle.mass;
+     this.mass/=this.particles.length/5;
+    }
+    if (this.connected==true){
+        this.connect()
+    }
+};
+
+  System.prototype.connect = function() {
+    var i;
+
+    for (i=0;i<this.particles.length-1;i++){
+        p = this.particles[i];
+        p2 = this.particles[i+1];
+        if (p.connected == false) {
+            print("hello");
+            try {
+                line(p.position.x, p.position.y, p2.position.x, p2.position.y)
+                p.connected =true;
+                p2.connected =true;
+            } catch {
+                break;
+            }
+        }
+        else{print(true);}
+        i+=1;
+    };
+}
   
 System.prototype.addParticle = function() {
     this.particles.push(new Particle(this));

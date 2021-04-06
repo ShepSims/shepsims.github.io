@@ -81,6 +81,9 @@ function keyPressed() {
             BACKGROUND = 0;
         }
     }
+    if (key == 'x'){
+        system.connected = !system.connected;
+    }
     if (key == 'z'){
         system.sticks = !system.sticks;
     }

@@ -6,6 +6,7 @@ let Particle = function(system) {
     this.system = system;
     this.type = this.system.type;
     this.growthRate = this.system.growthRate;
+    this.connected = false;
   
     this.position = createVector(this.system.position.x, this.system.position.y);
     this.velocity = createVector(0,0);
@@ -44,6 +45,7 @@ Particle.prototype.update = function() {
     this.mass += this.system.growthRate;
     
     if (this.mass <=0){this.mass = .1;}
+    this.connected=false;
     
 };
 
