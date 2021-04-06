@@ -3,26 +3,30 @@ function setup() {
     canvas = createCanvas(windowWidth,windowHeight);
     canvas.position(0,0);
     system = new System(mouseX, mouseY);
-    BACKGROUND = 0;
-    PARTICLE_COLOR = 255;
+    BACKGROUND = 255;
+    PARTICLE_COLOR = 0;
     play = true;
     
     
     controls = "     \
-left/right - add/pop particle\n     \
-up/down - increase/decrease growthRate\n     \
-l - draw lines\n     \
-d - draw dots\n     \
+h - help\n\n     \
+left - add particle\n     \
+right - pop particle\n     \
+up - increase growthRate\n     \
+down - increase growthRate\n\n     \
+l - add particles mode: line \n     \
+d - add particles mode: dots\n     \
+z - toggle line mass\n\n     \
 t - toggle trace\n     \
-x - toggle particle linking\n     \
-c - clean the sketchboard\n     \
+x - toggle closest sibling link\n     \
+o - toggle connect closest points\n     \
+b - invert\n\n     \
+c - clean the sketchboard\n\n     \
 s - save\n     \
 p - play/pause\n     \
-b - invert\n     \
-o - connect closest points\n     \
-z - line dashes\n     \
-q - quit to examples\n     \
+q - quit to examples\n\n     \
 r - reset";
+    text("h for help", 10, 15);
 }
 
 function windowResized() {
@@ -68,7 +72,6 @@ function keyPressed() {
     if (key == 'p'){
         if (play){
             noLoop();
-            alert(controls);
         }
         else{
             loop();
@@ -100,5 +103,8 @@ function keyPressed() {
     }
     if (key == 'o'){
         system.closest=!system.closest;
+    }
+    if (key == 'h'){
+        text(controls, 10, 25, 1000, 1000)
     }
 }

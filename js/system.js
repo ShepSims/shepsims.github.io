@@ -5,7 +5,7 @@
 let System = function(x, y){
     this.type = 'dot';
     this.gravityType = true;
-    this.trace = false;
+    this.trace = true;
     this.detached = false;
     this.sticks = false;
     this.connected = false;
@@ -18,8 +18,6 @@ let System = function(x, y){
     this.growthRate = .01;
            
     this.particles = [];
-    
-    text("try your arrow keys");
   
 };
 
