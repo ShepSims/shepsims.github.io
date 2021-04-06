@@ -23,11 +23,9 @@ q - quit to examples\n     \
 r - reset"
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
-}
 
 function draw() {
+    resizeCanvas(windowWidth, windowHeight);
     system.run();
 }
 
