@@ -13,6 +13,7 @@ up/down - increase/decrease growthRate\n     \
 l - draw lines\n     \
 d - draw dots\n     \
 t - toggle trace\n     \
+x - toggle particle linking\n     \
 c - clean the sketchboard\n     \
 s - save\n     \
 p - play/pause\n     \
