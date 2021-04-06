@@ -58,7 +58,7 @@ function keyPressed() {
         save('drawing.jpg');
     }
     if (key == 'g'){
-        system.gravityType = !system.gravityType
+        system.gravityType = !system.gravityType;
     }
     if (key == 't'){
         system.trace = !system.trace;
