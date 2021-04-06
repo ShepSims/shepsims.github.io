@@ -19,6 +19,7 @@ c - clean the sketchboard\n     \
 s - save\n     \
 p - play/pause\n     \
 b - invert\n     \
+o - connect closest points\n     \
 z - line dashes\n     \
 q - quit to examples\n     \
 r - reset";
