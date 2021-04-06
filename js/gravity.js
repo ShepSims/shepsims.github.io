@@ -3,9 +3,8 @@ function setup() {
     canvas = createCanvas(windowWidth,windowHeight);
     canvas.position(0,0);
     system = new System(mouseX, mouseY);
-    background(0);
     BACKGROUND = 0;
-    stroke(255-BACKGROUND);
+    PARTICLE_COLOR = 255;
     play = true;
     
     controls = "     \
@@ -23,9 +22,11 @@ q - quit to examples\n     \
 r - reset"
 }
 
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
 
 function draw() {
-    resizeCanvas(windowWidth, windowHeight);
     system.run();
 }
 
@@ -71,13 +72,16 @@ function keyPressed() {
         }
         play=!play;
     }
-    if (key == 'b'){
+    if (key == 'b'){   
+        
         if (BACKGROUND == 0){
             BACKGROUND = 255;
+            PARTICLE_COLOR = 0;
         }
         else {
             BACKGROUND = 0;
-        }
+            PARTICLE_COLOR = 255;
+    }
     }
     if (key == 'x'){
         system.connected = !system.connected;
@@ -91,4 +95,4 @@ function keyPressed() {
     if (key == 'r'){
         system = new System(mouseX, mouseY);
     }
-    }
+}

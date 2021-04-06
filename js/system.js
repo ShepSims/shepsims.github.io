@@ -23,11 +23,13 @@ let System = function(x, y){
 
 
 System.prototype.run = function() {
-    if (this.trace == false) {
+    if (!this.trace){
         background(BACKGROUND);
     }
+    
     this.position.x = mouseX;
     this.position.y = mouseY;
+
     for (let i =  this.particles.length-1; i >= 0; i--) {
       let particle = this.particles[i];
        particle.update();
@@ -47,7 +49,6 @@ System.prototype.run = function() {
         p = this.particles[i];
         p2 = this.particles[i+1];
         if (p.connected == false) {
-            print("hello");
             try {
                 line(p.position.x, p.position.y, p2.position.x, p2.position.y)
                 p.connected =true;
@@ -56,7 +57,6 @@ System.prototype.run = function() {
                 break;
             }
         }
-        else{print(true);}
         i+=1;
     };
 }
@@ -69,9 +69,5 @@ System.prototype.popParticle = function() {
     if (this.particles.length > 0) {
         this.particles.shift();    
     }
-};
-
-System.prototype.break = function() {
-    
 };
   

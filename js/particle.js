@@ -23,7 +23,6 @@ let Particle = function(system) {
 };
 
 Particle.prototype.update = function() {
-    this.color = createVector(0,0,0);
     
     this.previousDistance = this.distanceFromSystem;
     this.wasGettingCloser = true;
@@ -45,16 +44,16 @@ Particle.prototype.update = function() {
     this.mass += this.system.growthRate;
     
     if (this.mass <=0){this.mass = .1;}
+
     this.connected=false;
     
 };
 
 
 Particle.prototype.display = function() {
-    stroke(255-BACKGROUND);
-    fill(255-BACKGROUND);
+    stroke(PARTICLE_COLOR);
+    fill(PARTICLE_COLOR);
     if (this.type == 'dot'){
-        
         ellipse(this.position.x, this.position.y, this.mass, this.mass);
     }
     else if(this.type == 'line'){
@@ -65,9 +64,6 @@ Particle.prototype.display = function() {
         else{
             line(this.position.x, this.position.y, this.position.x+this.mass, this.position.y);
         }
-    }
-    else if(this.system.trace == false){
-        background(BACKGROUND);
     }
   
 };
