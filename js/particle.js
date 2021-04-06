@@ -74,7 +74,20 @@ Particle.prototype.display = function() {
   
 };
 
-Particle.prototype.branch = function(){
-    this.system.
-    ellipse(this.position.x, this.position.y, 10, 10);
-};
+Particle.prototype.getClosest = function() {
+    let closest;
+    let distance = 100000;
+    let i;
+    for (i = 0;i<this.system.particles.length-1;i++) {
+        particle = this.system.particles[i];
+        if (particle != this){
+            partdist = sqrt((this.position.x - particle.position.x)*(this.position.x - particle.position.x) + (this.position.y - particle.position.y)*(this.position.y - particle.position.y));
+            if (partdist<distance){
+                distance=partdist;
+                closest = particle;
+        }
+        }
+        
+    };
+    if (closest){line(this.position.x, this.position.y, closest.position.x, closest.position.y);}
+}

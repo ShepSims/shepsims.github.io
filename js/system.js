@@ -9,6 +9,7 @@ let System = function(x, y){
     this.detached = false;
     this.sticks = false;
     this.connected = false;
+    this.closest = false;
     
     this.position=createVector(x,y);
     this.velocity = createVector(0,0);
@@ -17,6 +18,8 @@ let System = function(x, y){
     this.growthRate = .01;
            
     this.particles = [];
+    
+    text("try your arrow keys");
   
 };
 
@@ -31,9 +34,10 @@ System.prototype.run = function() {
     this.position.y = mouseY;
 
     for (let i =  this.particles.length-1; i >= 0; i--) {
-      let particle = this.particles[i];
-       particle.update();
-      particle.display();
+        let particle = this.particles[i];
+        particle.update();
+        particle.display();
+        if (this.closest) { particle.getClosest(); }
      this.mass += particle.mass;
      this.mass/=this.particles.length/5;
     }

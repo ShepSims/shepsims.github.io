@@ -7,6 +7,7 @@ function setup() {
     PARTICLE_COLOR = 255;
     play = true;
     
+    
     controls = "     \
 left/right - add/pop particle\n     \
 up/down - increase/decrease growthRate\n     \
@@ -20,7 +21,7 @@ p - play/pause\n     \
 b - invert\n     \
 z - line dashes\n     \
 q - quit to examples\n     \
-r - reset"
+r - reset";
 }
 
 function windowResized() {
@@ -52,7 +53,7 @@ function keyPressed() {
         system.type = 'dot';
     }
     if (key =='c'){
-        background(0);
+        background(BACKGROUND);
     }
     if (key == 's'){
         save('drawing.jpg');
@@ -95,5 +96,8 @@ function keyPressed() {
     }
     if (key == 'r'){
         system = new System(mouseX, mouseY);
+    }
+    if (key == 'o'){
+        system.closest=!system.closest;
     }
 }
