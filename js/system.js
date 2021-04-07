@@ -3,7 +3,7 @@
 // ----------------------------------------
 
 let System = function(x, y){
-    this.type = 'dot';
+    this.type = 'line';
     this.gravityType = true;
     this.trace = true;
     this.detached = false;
@@ -26,6 +26,9 @@ let System = function(x, y){
 System.prototype.run = function() {
     if (!this.trace){
         background(BACKGROUND);
+        if (menu){
+        text(controls, 10, 25, 1000, 1000);
+    }
     }
     
     this.position.x = mouseX;

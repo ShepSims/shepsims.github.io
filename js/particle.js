@@ -36,8 +36,8 @@ Particle.prototype.update = function() {
         this.velocity.x += cos(this.angle)*this.distanceFromSystem*this.distanceFromSystem/100000;
         this.velocity.y += sin(this.angle)*this.distanceFromSystem*this.distanceFromSystem/100000;
     } else {
-        this.velocity.x += cos(this.angle)/(this.distanceFromSystem*2);
-        this.velocity.y += sin(this.angle)/(this.distanceFromSystem*2);
+        this.velocity.x += cos(this.angle)/(this.distanceFromSystem);
+        this.velocity.y += sin(this.angle)/(this.distanceFromSystem);
     }
     
   
@@ -57,8 +57,8 @@ Particle.prototype.update = function() {
 
 
 Particle.prototype.display = function() {
-    stroke(PARTICLE_COLOR);
-    fill(PARTICLE_COLOR);
+    stroke(color(r,g,b));
+    fill(color(r,g,b));
     if (this.type == 'dot'){
         ellipse(this.position.x, this.position.y, this.mass, this.mass);
     }
