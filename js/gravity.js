@@ -7,7 +7,7 @@ function setup() {
     r = 0;
     g = 0;
     b = 0;
-    e = false;
+    resetdelay = 0;
     play = true;
     menu = false;
     
@@ -56,7 +56,14 @@ q - quit to examples";
 
 
 function draw() {
+    if (resetdelay == 5 && frameCount%30==0){
+        r = 255-r;
+        g = 255-g;
+        b = 255-b;
+    }
     system.run();
+    if (system.connectType != null) {system.connect()}
+    
 }
 
 
@@ -74,10 +81,10 @@ function keyPressed() {
         system.growthRate += 0.1;
     }
     if (key == 'l'){
-        system.type = 'line';
+        system.drawType = 'line';
     }
     if (key =='d'){
-        system.type = 'dot';
+        system.drawType = 'dot';
     }
     if (key == 'z'){
         system.sticks = !system.sticks;
@@ -151,11 +158,22 @@ function keyPressed() {
     }
     
     // connecttion types
-    if (key == 'x'){
-        system.connected = !system.connected;
+    if (key == 'i'){
+        if (system.connectType == "pairs") {
+            system.connectType = null;
+        } else { system.connectType = "pairs"; }
+        
     }
     if (key == 'o'){
-        system.closest=!system.closest;
+        if (system.connectType == "closest") {
+            system.connectType = null;
+        } else { system.connectType = "closest"; }
+    }
+
+    if (key == 'u'){
+        if (system.connectType == "random") {
+            system.connectType = null;
+        } else { system.connectType = "random"; }
     }
     
     if (key == "q"){
@@ -171,10 +189,20 @@ function keyPressed() {
             text(controls, 10, 25, 1000, 1000);
         }
     }
+    if (key == '1'){
+        system.connectCount = 1;
+    }
+    if (key == '2'){
+        system.connectCount = 2;
+    }
+    if (key == '3'){
+        system.connectCount = 3;
+    }
+    if (key == '5'){
+        if (resetdelay == 0) {resetdelay = 5;}else{resetdelay=0}
+        
+    }
     if (key == 'y'){
         BACKGROUND=255-BACKGROUND;
-    }
-    if (key == 'e'){
-        rotate(radians(frameCount));
     }
 }
