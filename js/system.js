@@ -24,6 +24,8 @@ let System = function(x, y){
 
 
 System.prototype.run = function() {
+
+    // If not tracing, reset background and redisplay menu
     if (!this.trace){
         background(BACKGROUND);
         if (menu){
@@ -31,17 +33,23 @@ System.prototype.run = function() {
     }
     }
     
+    // Set system position
     this.position.x = mouseX;
     this.position.y = mouseY;
 
+    // Update Particles positions and display
     for (let i =  this.particles.length-1; i >= 0; i--) {
         let particle = this.particles[i];
         particle.update();
         particle.display();
+
+        // if closest connections enabled, get particles nearest neighbor
         if (this.closest) { particle.getClosest(); }
-     this.mass += particle.mass;
-     this.mass/=this.particles.length/5;
+    
+        //
+        this.mass += particle.mass;
     }
+    this.mass /= this.particles.length/5;
     if (this.connected==true){
         this.connect()
     }

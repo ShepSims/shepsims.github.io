@@ -7,6 +7,7 @@ function setup() {
     r = 0;
     g = 0;
     b = 0;
+    e = false;
     play = true;
     menu = false;
     
@@ -53,9 +54,6 @@ q - quit to examples";
     text("h for help", 10, 15);
 }
 
-function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
-}
 
 function draw() {
     system.run();
@@ -175,5 +173,8 @@ function keyPressed() {
     }
     if (key == 'y'){
         BACKGROUND=255-BACKGROUND;
+    }
+    if (key == 'e'){
+        rotate(radians(frameCount));
     }
 }
