@@ -25,14 +25,15 @@ r - reset\n\n     \
 --------------------------\n     \
           COLOR\n     \
 --------------------------\n\n     \
-b - black\n     \
-w - white\n\n     \
-[ - add r\n     \
-] - subtract r\n     \
-; - add g\n     \
-' - subtract g\n     \
-. - add b\n     \
-/ - subtract b\n\n     \
+y - invert background\n     \
+b - black particles\n     \
+w - white particles\n\n     \
+[ - add red\n     \
+] - subtract red\n     \
+; - add green\n     \
+' - subtract green\n     \
+. - add blue\n     \
+/ - subtract blue\n\n     \
 --------------------------\n     \
           MODE\n     \
 --------------------------\n\n     \
