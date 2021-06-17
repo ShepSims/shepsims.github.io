@@ -16,8 +16,8 @@ function setup() {
 --------------------------\n     \
           BASIC\n     \
 --------------------------\n\n     \
-left - add particle\n     \
-right - pop particle\n     \
+right - add particle\n     \
+left - pop particle\n     \
 up - increase growthRate\n     \
 down - increase growthRate\n\n     \
 c - clean the sketchboard\n     \
