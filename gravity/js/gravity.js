@@ -3,8 +3,6 @@ window.location.hash = "gravity";
 function setup() {
     
     canvas = createCanvas(windowWidth,windowHeight);
-    BACKGROUND = 0;
-    background(BACKGROUND);
     canvas.position(0,0);
     system = new System(mouseX, mouseY);
     
@@ -13,7 +11,8 @@ function setup() {
     b = 255;
     resetdelay = 0;
     play = true;
-    menu = true;
+    menu = false;
+    start = true;
     
     
     controls = "\n     \
@@ -56,7 +55,8 @@ o - toggle connect closest points\n\n     \
 s - save\n     \
 p - play/pause\n     \
 q - quit to examples";
-    text("h for help", 10, 15);
+BACKGROUND = 0;
+background(BACKGROUND);
 }
 
 
@@ -66,9 +66,14 @@ function draw() {
         g = 255-g;
         b = 255-b;
     }
+    if (start == 1){system.addParticle()}
     system.run();
     if (system.connectType != null) {system.connect()}
-    
+    if (start < 5) { 
+        text(controls, 10, 25, 1000, 1000);
+        system.popParticle()
+        start ++;
+    }
 }
 
 
@@ -96,9 +101,6 @@ function keyPressed() {
     }
     if (key =='c'){
         background(BACKGROUND);
-        if (menu){
-            text(controls, 10, 25, 1000, 1000);
-        }
     }
     if (key == 's'){
         save('drawing.jpg');
