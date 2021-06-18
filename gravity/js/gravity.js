@@ -1,15 +1,19 @@
 window.location.hash = "gravity";
+
 function setup() {
+    
     canvas = createCanvas(windowWidth,windowHeight);
+    BACKGROUND = 0;
+    background(BACKGROUND);
     canvas.position(0,0);
     system = new System(mouseX, mouseY);
-    BACKGROUND = 255;
-    r = 0;
-    g = 0;
-    b = 0;
+    
+    r = 255;
+    g = 255;
+    b = 255;
     resetdelay = 0;
     play = true;
-    menu = false;
+    menu = true;
     
     
     controls = "\n     \
