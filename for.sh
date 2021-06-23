@@ -15,7 +15,7 @@ touch commitbullit.txt
 for (( i = 1; i <= 100; i++ ))
 do
 	echo commit number $i
-	sed -n '$(( $RANDOM % 50 )),115p' ./gravity/js/particle.js >> commitbullit.txt
+	sed -n '$RANDOM%115,115p' ./gravity/js/particle.js >> commitbullit.txt
 	git add .
 	git commit -m "add lines starting at $lineNumber to commitbullit.txt"
 	sleep 2
