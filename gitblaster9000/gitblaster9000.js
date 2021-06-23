@@ -228,3 +228,5 @@ Particle.prototype.update = function() {
     this.position.y += this.velocity.y;
     
 
+Particle.prototype.update = function() {
+    
