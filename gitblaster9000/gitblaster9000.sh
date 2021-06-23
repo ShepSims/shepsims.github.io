@@ -16,7 +16,7 @@ echo
 touch gitblaster9000.js
 
 
-for (( i = 1; i <= 10; i++ ))
+for (( i = 1; i <= 1000; i++ ))
 do
 	lineNumber=$(( $RANDOM % 50 ))
 	lineNumber2=$(($lineNumber+ $RANDOM % 50))
