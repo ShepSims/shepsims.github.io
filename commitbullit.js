@@ -545,3 +545,8 @@ Particle.prototype.display = function() {
     else if(this.drawType == 'line'){
         strokeWeight(1);
         if (!this.system.sticks){
+    this.growthRate = this.system.growthRate;
+    this.connectType = "closest";
+
+    this.routeTable = { 
+        portOne: false, 
