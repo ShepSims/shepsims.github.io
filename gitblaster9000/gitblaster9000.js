@@ -23,3 +23,8 @@ Particle.prototype.display = function() {
     stroke(color(r,g,b));
     fill(color(r,g,b));
     if (this.drawType == 'dot'){
+let Particle = function(system) {
+    this.system = system;
+    this.drawType = this.system.drawType;
+    this.growthRate = this.system.growthRate;
+    this.connectType = "closest";
