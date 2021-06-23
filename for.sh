@@ -10,7 +10,7 @@ echo here we go
 echo
 
 touch commitbullit.js
-lineNumber= $(( $RANDOM % 50 ))
+lineNumber=$(( $RANDOM % 50 ))
 lineNumber2=$(($lineNumber+63))
 
 
