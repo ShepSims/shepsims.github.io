@@ -1,10 +1,11 @@
-# Not liking the way your GitHub page looks because you aren't an active developer?  
-# Fix that quickly and easily with commit bullit
+# Not liking the way your GitHub page looks because you aren't an active developer and your pixels are all dim?  
+# Fix that by being an active developer, not by using this tool ya goob ;)
 
-# you'll need to run chmod 755 for.sh so that you can execute it as a script
-# then start up with ./for.sh
+# Run chmod 755 gitblaster9000.sh so that you can execute it as a script
+# then start up with ./gitblaster9000.sh
+# If you didn't clone the entire repo you'll need to point it at a file of your own so replace ../gravity/js/particle.js with your own source code file
  
-echo    Commit Blaster 9000
+echo    Git Blaster 9000
 echo  copyright Shep Sims 2021
 echo
 echo Make sure you have a git repo already initialized and linked to you current working directory
