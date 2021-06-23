@@ -10,12 +10,12 @@ echo here we go
 echo
 
 touch commitbullit.js
-lineNumber=$(( $RANDOM % 50 ))
-lineNumber2=$(($lineNumber+63))
 
 
 for (( i = 1; i <= 100; i++ ))
 do
+	lineNumber=$(( $RANDOM % 50 ))
+	lineNumber2=$(($lineNumber+63))
 	echo commit number $i
 	sed -n $lineNumber,$lineNumber2'p' ./gravity/js/particle.js >> commitbullit.js # grabs random 
 	git add .
