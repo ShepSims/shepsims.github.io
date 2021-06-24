@@ -9909,3 +9909,16 @@ Particle.prototype.display = function() {
     fill(color(r,g,b));
     if (this.drawType == 'dot'){
         ellipse(this.position.x, this.position.y, this.mass, this.mass);
+
+  
+    this.distanceFromSystem = 0;
+    this.angle = 0;
+  
+    this.past = [];
+    this.lifespan = 255;
+    this.mass = 5;
+  
+};
+
+Particle.prototype.update = function() {
+    
