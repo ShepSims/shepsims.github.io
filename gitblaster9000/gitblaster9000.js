@@ -9766,3 +9766,9 @@ let Particle = function(system) {
     this.lifespan = 255;
     this.mass = 5;
   
+
+    this.routeTable = { 
+        portOne: false, 
+        portTwo: false,
+        portThree: false };
+
