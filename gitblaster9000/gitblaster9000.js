@@ -9800,3 +9800,7 @@ let Particle = function(system) {
     this.distanceFromSystem = sqrt((this.position.x - this.system.position.x)*(this.position.x - this.system.position.x) + (this.position.y - this.system.position.y)*(this.position.y - this.system.position.y));
     
     this.angle = atan2(this.system.position.y - this.position.y, this.system.position.x - this.position.x);
+
+  
+    this.distanceFromSystem = 0;
+    this.angle = 0;
