@@ -4475,3 +4475,14 @@ Particle.prototype.getClosest = function() {
     let closest3;
     let distance = 100000;
     let distance2 = 100000;
+    
+    this.velocity = createVector(0,0);
+    this.acceleration = createVector(0,0);
+
+  
+    this.distanceFromSystem = 0;
+    this.angle = 0;
+  
+    this.past = [];
+    this.lifespan = 255;
+    this.mass = 5;
