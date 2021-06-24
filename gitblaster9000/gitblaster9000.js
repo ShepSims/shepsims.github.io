@@ -4877,3 +4877,6 @@ Particle.prototype.update = function() {
     this.wasGettingCloser = true;
     this.connectCount = this.system.connectCount;
     
+        portTwo: false,
+        portThree: false };
+
