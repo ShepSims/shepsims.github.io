@@ -7659,3 +7659,8 @@ Particle.prototype.getClosest = function() {
     let distance = 100000;
     let distance2 = 100000;
     let distance3 = 100000;
+        this.velocity.y += sin(this.angle)/(this.distanceFromSystem);
+    }
+    
+  
+    this.previousPosition = createVector(this.position.x, this.position.y);
