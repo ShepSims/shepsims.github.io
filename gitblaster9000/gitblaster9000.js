@@ -6795,3 +6795,5 @@ Particle.prototype.update = function() {
         this.velocity.y += sin(this.angle)/(this.distanceFromSystem);
     }
     
+    
+    this.angle = atan2(this.system.position.y - this.position.y, this.system.position.x - this.position.x);
