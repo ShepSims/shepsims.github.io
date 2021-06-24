@@ -3089,3 +3089,8 @@ Particle.prototype.update = function() {
   
 };
 
+//----------------------------------------
+//               PARTICLE
+// ----------------------------------------
+
+let Particle = function(system) {
