@@ -4288,3 +4288,9 @@ let Particle = function(system) {
     this.past = [];
     this.lifespan = 255;
     this.mass = 5;
+};
+
+Particle.prototype.update = function() {
+    
+    this.previousDistance = this.distanceFromSystem;
+    this.wasGettingCloser = true;
