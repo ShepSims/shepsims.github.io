@@ -331,3 +331,20 @@ Particle.prototype.update = function() {
     } else {
         this.velocity.x += cos(this.angle)/(this.distanceFromSystem);
         this.velocity.y += sin(this.angle)/(this.distanceFromSystem);
+    this.acceleration = createVector(0,0);
+
+  
+    this.distanceFromSystem = 0;
+    this.angle = 0;
+  
+    this.past = [];
+    this.lifespan = 255;
+    this.mass = 5;
+  
+};
+
+Particle.prototype.update = function() {
+    
+    this.previousDistance = this.distanceFromSystem;
+    this.wasGettingCloser = true;
+    this.connectCount = this.system.connectCount;
