@@ -9531,3 +9531,17 @@ let Particle = function(system) {
         portOne: false, 
         portTwo: false,
         portThree: false };
+    this.angle = 0;
+  
+    this.past = [];
+    this.lifespan = 255;
+    this.mass = 5;
+  
+};
+
+Particle.prototype.update = function() {
+    
+    this.previousDistance = this.distanceFromSystem;
+    this.wasGettingCloser = true;
+    this.connectCount = this.system.connectCount;
+    
