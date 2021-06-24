@@ -4294,3 +4294,7 @@ Particle.prototype.update = function() {
     
     this.previousDistance = this.distanceFromSystem;
     this.wasGettingCloser = true;
+
+    this.position = createVector(this.system.position.x + random(-50,50), this.system.position.y+ random(-50,50));
+    
+    this.velocity = createVector(0,0);
