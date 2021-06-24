@@ -9793,3 +9793,10 @@ let Particle = function(system) {
   
 };
 
+    this.wasGettingCloser = true;
+    this.connectCount = this.system.connectCount;
+    
+    
+    this.distanceFromSystem = sqrt((this.position.x - this.system.position.x)*(this.position.x - this.system.position.x) + (this.position.y - this.system.position.y)*(this.position.y - this.system.position.y));
+    
+    this.angle = atan2(this.system.position.y - this.position.y, this.system.position.x - this.position.x);
