@@ -2587,3 +2587,5 @@ Particle.prototype.display = function() {
             line(this.position.x, this.position.y, this.position.x+this.mass, this.position.y);
         }
     }
+// ----------------------------------------
+
