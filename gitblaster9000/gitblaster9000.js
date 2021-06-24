@@ -7123,3 +7123,13 @@ Particle.prototype.update = function() {
 
     this.position = createVector(this.system.position.x + random(-50,50), this.system.position.y+ random(-50,50));
     
+let Particle = function(system) {
+    this.system = system;
+    this.drawType = this.system.drawType;
+    this.growthRate = this.system.growthRate;
+    this.connectType = "closest";
+
+    this.routeTable = { 
+        portOne: false, 
+        portTwo: false,
+        portThree: false };
