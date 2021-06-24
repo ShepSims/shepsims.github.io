@@ -3109,3 +3109,7 @@ let Particle = function(system) {
     this.acceleration = createVector(0,0);
 
   
+    
+    
+    this.distanceFromSystem = sqrt((this.position.x - this.system.position.x)*(this.position.x - this.system.position.x) + (this.position.y - this.system.position.y)*(this.position.y - this.system.position.y));
+    
