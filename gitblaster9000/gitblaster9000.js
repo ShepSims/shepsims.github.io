@@ -860,3 +860,17 @@ Particle.prototype.update = function() {
     
   
     this.previousPosition = createVector(this.position.x, this.position.y);
+    this.acceleration = createVector(0,0);
+
+  
+    this.distanceFromSystem = 0;
+    this.angle = 0;
+  
+    this.past = [];
+    this.lifespan = 255;
+    this.mass = 5;
+  
+};
+
+Particle.prototype.update = function() {
+    
