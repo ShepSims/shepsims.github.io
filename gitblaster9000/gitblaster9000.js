@@ -5943,3 +5943,12 @@ Particle.prototype.display = function() {
     this.connected=false;
     
 };
+    this.system = system;
+    this.drawType = this.system.drawType;
+    this.growthRate = this.system.growthRate;
+    this.connectType = "closest";
+
+    this.routeTable = { 
+        portOne: false, 
+        portTwo: false,
+        portThree: false };
