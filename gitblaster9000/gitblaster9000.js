@@ -3937,3 +3937,6 @@ let Particle = function(system) {
     this.mass = 5;
   
 };
+        portTwo: false,
+        portThree: false };
+
