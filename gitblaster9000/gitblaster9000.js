@@ -9467,3 +9467,7 @@ Particle.prototype.display = function() {
         if (!this.system.sticks){
             line(this.previousPosition.x, this.previousPosition.y, this.position.x, this.position.y);
         }
+    this.drawType = this.system.drawType;
+    this.growthRate = this.system.growthRate;
+    this.connectType = "closest";
+
