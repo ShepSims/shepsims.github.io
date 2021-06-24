@@ -4419,3 +4419,12 @@ Particle.prototype.update = function() {
     this.mass += this.system.growthRate;
     
     this.mass = 5;
+    
+    this.velocity = createVector(0,0);
+    this.acceleration = createVector(0,0);
+
+  
+    this.distanceFromSystem = 0;
+    this.angle = 0;
+  
+    this.past = [];
