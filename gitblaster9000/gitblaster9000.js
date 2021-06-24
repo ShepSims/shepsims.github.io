@@ -1499,3 +1499,11 @@ let Particle = function(system) {
 };
 
 Particle.prototype.update = function() {
+    this.drawType = this.system.drawType;
+    this.growthRate = this.system.growthRate;
+    this.connectType = "closest";
+
+    this.routeTable = { 
+        portOne: false, 
+        portTwo: false,
+        portThree: false };
