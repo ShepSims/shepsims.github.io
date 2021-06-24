@@ -2386,3 +2386,23 @@ Particle.prototype.display = function() {
     fill(color(r,g,b));
     if (this.drawType == 'dot'){
         ellipse(this.position.x, this.position.y, this.mass, this.mass);
+//               PARTICLE
+// ----------------------------------------
+
+let Particle = function(system) {
+    this.system = system;
+    this.drawType = this.system.drawType;
+    this.growthRate = this.system.growthRate;
+    this.connectType = "closest";
+
+    this.routeTable = { 
+        portOne: false, 
+        portTwo: false,
+        portThree: false };
+
+    this.position = createVector(this.system.position.x + random(-50,50), this.system.position.y+ random(-50,50));
+    
+    this.velocity = createVector(0,0);
+    this.acceleration = createVector(0,0);
+
+  
