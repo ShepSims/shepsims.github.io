@@ -5881,3 +5881,5 @@ Particle.prototype.update = function() {
     this.position.y += this.velocity.y;
     
 
+    
+    this.velocity = createVector(0,0);
