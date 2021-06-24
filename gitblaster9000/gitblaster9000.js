@@ -2819,3 +2819,6 @@ Particle.prototype.update = function() {
 
     this.connected=false;
     
+    }
+    
+  
