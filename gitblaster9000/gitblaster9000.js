@@ -4006,3 +4006,6 @@ Particle.prototype.update = function() {
     this.routeTable = { 
         portOne: false, 
         portTwo: false,
+    this.routeTable = { 
+        portOne: false, 
+        portTwo: false,
