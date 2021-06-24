@@ -7508,3 +7508,8 @@ let Particle = function(system) {
     this.mass += this.system.growthRate;
     
     if (this.mass <=0){this.mass = .1;}
+    this.drawType = this.system.drawType;
+    this.growthRate = this.system.growthRate;
+    this.connectType = "closest";
+
+    this.routeTable = { 
