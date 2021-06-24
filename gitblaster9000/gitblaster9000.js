@@ -9747,3 +9747,22 @@ let Particle = function(system) {
     this.past = [];
     this.lifespan = 255;
     this.mass = 5;
+
+    this.routeTable = { 
+        portOne: false, 
+        portTwo: false,
+        portThree: false };
+
+    this.position = createVector(this.system.position.x + random(-50,50), this.system.position.y+ random(-50,50));
+    
+    this.velocity = createVector(0,0);
+    this.acceleration = createVector(0,0);
+
+  
+    this.distanceFromSystem = 0;
+    this.angle = 0;
+  
+    this.past = [];
+    this.lifespan = 255;
+    this.mass = 5;
+  
