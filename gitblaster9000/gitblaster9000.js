@@ -1147,3 +1147,8 @@ Particle.prototype.display = function() {
 
 Particle.prototype.display = function() {
     stroke(color(r,g,b));
+        portTwo: false,
+        portThree: false };
+
+    this.position = createVector(this.system.position.x + random(-50,50), this.system.position.y+ random(-50,50));
+    
