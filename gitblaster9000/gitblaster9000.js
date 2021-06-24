@@ -3304,3 +3304,10 @@ Particle.prototype.update = function() {
     this.position.y += this.velocity.y;
     
 
+    this.growthRate = this.system.growthRate;
+    this.connectType = "closest";
+
+    this.routeTable = { 
+        portOne: false, 
+        portTwo: false,
+        portThree: false };
