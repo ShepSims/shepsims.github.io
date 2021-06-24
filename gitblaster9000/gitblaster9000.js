@@ -2458,3 +2458,17 @@ let Particle = function(system) {
 
   
     this.distanceFromSystem = 0;
+//----------------------------------------
+//               PARTICLE
+// ----------------------------------------
+
+let Particle = function(system) {
+    this.system = system;
+    this.drawType = this.system.drawType;
+    this.growthRate = this.system.growthRate;
+    this.connectType = "closest";
+
+    this.routeTable = { 
+        portOne: false, 
+        portTwo: false,
+        portThree: false };
