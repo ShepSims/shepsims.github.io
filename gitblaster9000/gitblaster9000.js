@@ -8229,3 +8229,13 @@ Particle.prototype.update = function() {
     this.wasGettingCloser = true;
     this.connectCount = this.system.connectCount;
     
+    this.angle = atan2(this.system.position.y - this.position.y, this.system.position.x - this.position.x);
+    
+    if (this.system.gravityType == true){
+        this.velocity.x += cos(this.angle)*this.distanceFromSystem*this.distanceFromSystem/100000;
+        this.velocity.y += sin(this.angle)*this.distanceFromSystem*this.distanceFromSystem/100000;
+    } else {
+        this.velocity.x += cos(this.angle)/(this.distanceFromSystem);
+        this.velocity.y += sin(this.angle)/(this.distanceFromSystem);
+    }
+    
