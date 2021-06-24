@@ -666,3 +666,9 @@ Particle.prototype.update = function() {
     this.connectCount = this.system.connectCount;
     
     
+//               PARTICLE
+// ----------------------------------------
+
+let Particle = function(system) {
+    this.system = system;
+    this.drawType = this.system.drawType;
