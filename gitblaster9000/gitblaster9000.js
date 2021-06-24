@@ -5549,3 +5549,9 @@ Particle.prototype.display = function() {
     }
     else if(this.drawType == 'line'){
         strokeWeight(1);
+    
+    if (this.system.gravityType == true){
+        this.velocity.x += cos(this.angle)*this.distanceFromSystem*this.distanceFromSystem/100000;
+        this.velocity.y += sin(this.angle)*this.distanceFromSystem*this.distanceFromSystem/100000;
+    } else {
+        this.velocity.x += cos(this.angle)/(this.distanceFromSystem);
