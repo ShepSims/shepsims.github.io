@@ -2472,3 +2472,7 @@ let Particle = function(system) {
         portOne: false, 
         portTwo: false,
         portThree: false };
+        portOne: false, 
+        portTwo: false,
+        portThree: false };
+
