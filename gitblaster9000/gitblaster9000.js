@@ -3887,3 +3887,16 @@ let Particle = function(system) {
     this.acceleration = createVector(0,0);
 
   
+    
+    this.velocity = createVector(0,0);
+    this.acceleration = createVector(0,0);
+
+  
+    this.distanceFromSystem = 0;
+    this.angle = 0;
+  
+    this.past = [];
+    this.lifespan = 255;
+    this.mass = 5;
+  
+};
