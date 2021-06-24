@@ -8706,3 +8706,5 @@ Particle.prototype.update = function() {
 
 
 Particle.prototype.display = function() {
+// ----------------------------------------
+
