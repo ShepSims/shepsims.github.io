@@ -8931,3 +8931,16 @@ Particle.prototype.update = function() {
     
 
     this.mass += this.system.growthRate;
+  
+    this.distanceFromSystem = 0;
+    this.angle = 0;
+  
+    this.past = [];
+    this.lifespan = 255;
+    this.mass = 5;
+  
+};
+
+Particle.prototype.update = function() {
+    
+    this.previousDistance = this.distanceFromSystem;
