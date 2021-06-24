@@ -8412,3 +8412,6 @@ Particle.prototype.display = function() {
     this.lifespan = 255;
     this.mass = 5;
   
+  
+};
+
