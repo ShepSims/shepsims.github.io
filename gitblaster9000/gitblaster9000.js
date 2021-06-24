@@ -6859,3 +6859,10 @@ Particle.prototype.display = function() {
             line(this.previousPosition.x, this.previousPosition.y, this.position.x, this.position.y);
         }
         else{
+        this.velocity.x += cos(this.angle)/(this.distanceFromSystem);
+        this.velocity.y += sin(this.angle)/(this.distanceFromSystem);
+    }
+    
+  
+    this.previousPosition = createVector(this.position.x, this.position.y);
+    
