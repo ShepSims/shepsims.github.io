@@ -9693,3 +9693,27 @@ Particle.prototype.update = function() {
         this.velocity.x += cos(this.angle)/(this.distanceFromSystem);
         this.velocity.y += sin(this.angle)/(this.distanceFromSystem);
     }
+
+let Particle = function(system) {
+    this.system = system;
+    this.drawType = this.system.drawType;
+    this.growthRate = this.system.growthRate;
+    this.connectType = "closest";
+
+    this.routeTable = { 
+        portOne: false, 
+        portTwo: false,
+        portThree: false };
+
+    this.position = createVector(this.system.position.x + random(-50,50), this.system.position.y+ random(-50,50));
+    
+    this.velocity = createVector(0,0);
+    this.acceleration = createVector(0,0);
+
+  
+    this.distanceFromSystem = 0;
+    this.angle = 0;
+  
+    this.past = [];
+    this.lifespan = 255;
+    this.mass = 5;
