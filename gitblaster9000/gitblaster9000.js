@@ -7116,3 +7116,10 @@ Particle.prototype.update = function() {
     this.distanceFromSystem = sqrt((this.position.x - this.system.position.x)*(this.position.x - this.system.position.x) + (this.position.y - this.system.position.y)*(this.position.y - this.system.position.y));
     
     this.angle = atan2(this.system.position.y - this.position.y, this.system.position.x - this.position.x);
+    this.routeTable = { 
+        portOne: false, 
+        portTwo: false,
+        portThree: false };
+
+    this.position = createVector(this.system.position.x + random(-50,50), this.system.position.y+ random(-50,50));
+    
