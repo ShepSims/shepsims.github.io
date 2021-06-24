@@ -4418,3 +4418,4 @@ Particle.prototype.update = function() {
 
     this.mass += this.system.growthRate;
     
+    this.mass = 5;
