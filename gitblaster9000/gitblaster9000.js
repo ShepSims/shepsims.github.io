@@ -3534,3 +3534,9 @@ Particle.prototype.update = function() {
         this.velocity.y += sin(this.angle)/(this.distanceFromSystem);
     }
     
+    
+    this.distanceFromSystem = sqrt((this.position.x - this.system.position.x)*(this.position.x - this.system.position.x) + (this.position.y - this.system.position.y)*(this.position.y - this.system.position.y));
+    
+    this.angle = atan2(this.system.position.y - this.position.y, this.system.position.x - this.position.x);
+    
+    if (this.system.gravityType == true){
