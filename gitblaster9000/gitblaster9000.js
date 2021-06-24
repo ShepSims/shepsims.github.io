@@ -884,3 +884,6 @@ Particle.prototype.update = function() {
     this.mass = 5;
   
 };
+    }
+    
+  
