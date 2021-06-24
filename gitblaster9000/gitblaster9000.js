@@ -4846,3 +4846,6 @@ Particle.prototype.display = function() {
 
 Particle.prototype.update = function() {
     
+    this.connectType = "closest";
+
+    this.routeTable = { 
