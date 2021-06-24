@@ -3296,3 +3296,11 @@ Particle.prototype.update = function() {
     
   
     this.previousPosition = createVector(this.position.x, this.position.y);
+    
+  
+    this.previousPosition = createVector(this.position.x, this.position.y);
+    
+    this.position.x += this.velocity.x;
+    this.position.y += this.velocity.y;
+    
+
