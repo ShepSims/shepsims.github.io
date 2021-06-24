@@ -8239,3 +8239,13 @@ Particle.prototype.update = function() {
         this.velocity.y += sin(this.angle)/(this.distanceFromSystem);
     }
     
+//               PARTICLE
+// ----------------------------------------
+
+let Particle = function(system) {
+    this.system = system;
+    this.drawType = this.system.drawType;
+    this.growthRate = this.system.growthRate;
+    this.connectType = "closest";
+
+    this.routeTable = { 
