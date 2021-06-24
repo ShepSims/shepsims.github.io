@@ -348,3 +348,13 @@ Particle.prototype.update = function() {
     this.previousDistance = this.distanceFromSystem;
     this.wasGettingCloser = true;
     this.connectCount = this.system.connectCount;
+    this.growthRate = this.system.growthRate;
+    this.connectType = "closest";
+
+    this.routeTable = { 
+        portOne: false, 
+        portTwo: false,
+        portThree: false };
+
+    this.position = createVector(this.system.position.x + random(-50,50), this.system.position.y+ random(-50,50));
+    
