@@ -8708,3 +8708,5 @@ Particle.prototype.update = function() {
 Particle.prototype.display = function() {
 // ----------------------------------------
 
+    this.routeTable = { 
+        portOne: false, 
