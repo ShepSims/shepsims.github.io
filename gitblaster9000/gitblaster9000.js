@@ -4651,3 +4651,15 @@ Particle.prototype.update = function() {
   
     this.past = [];
     this.lifespan = 255;
+    this.lifespan = 255;
+    this.mass = 5;
+  
+};
+
+Particle.prototype.update = function() {
+    
+    this.previousDistance = this.distanceFromSystem;
+    this.wasGettingCloser = true;
+    this.connectCount = this.system.connectCount;
+    
+    
