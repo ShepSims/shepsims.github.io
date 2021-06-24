@@ -8818,3 +8818,25 @@ Particle.prototype.display = function() {
         else{
             line(this.position.x, this.position.y, this.position.x+this.mass, this.position.y);
         }
+
+Particle.prototype.update = function() {
+    
+    this.previousDistance = this.distanceFromSystem;
+    this.wasGettingCloser = true;
+    this.connectCount = this.system.connectCount;
+    
+    
+    this.distanceFromSystem = sqrt((this.position.x - this.system.position.x)*(this.position.x - this.system.position.x) + (this.position.y - this.system.position.y)*(this.position.y - this.system.position.y));
+    
+    this.angle = atan2(this.system.position.y - this.position.y, this.system.position.x - this.position.x);
+    
+    if (this.system.gravityType == true){
+        this.velocity.x += cos(this.angle)*this.distanceFromSystem*this.distanceFromSystem/100000;
+        this.velocity.y += sin(this.angle)*this.distanceFromSystem*this.distanceFromSystem/100000;
+    } else {
+        this.velocity.x += cos(this.angle)/(this.distanceFromSystem);
+        this.velocity.y += sin(this.angle)/(this.distanceFromSystem);
+    }
+    
+  
+    this.previousPosition = createVector(this.position.x, this.position.y);
