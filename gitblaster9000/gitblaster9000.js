@@ -2950,3 +2950,12 @@ Particle.prototype.display = function() {
             line(this.previousPosition.x, this.previousPosition.y, this.position.x, this.position.y);
         }
         else{
+    this.distanceFromSystem = 0;
+    this.angle = 0;
+  
+    this.past = [];
+    this.lifespan = 255;
+    this.mass = 5;
+  
+};
+
