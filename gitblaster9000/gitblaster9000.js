@@ -9654,3 +9654,9 @@ Particle.prototype.display = function() {
 
 
 Particle.prototype.display = function() {
+        this.velocity.y += sin(this.angle)/(this.distanceFromSystem);
+    }
+    
+  
+    this.previousPosition = createVector(this.position.x, this.position.y);
+    
