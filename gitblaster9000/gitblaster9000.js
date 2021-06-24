@@ -8643,3 +8643,13 @@ Particle.prototype.update = function() {
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
     
+  
+};
+
+Particle.prototype.update = function() {
+    
+    this.previousDistance = this.distanceFromSystem;
+    this.wasGettingCloser = true;
+    this.connectCount = this.system.connectCount;
+    
+    
