@@ -5756,3 +5756,14 @@ Particle.prototype.update = function() {
 
     this.connected=false;
     
+    this.previousDistance = this.distanceFromSystem;
+    this.wasGettingCloser = true;
+    this.connectCount = this.system.connectCount;
+    
+    
+    this.distanceFromSystem = sqrt((this.position.x - this.system.position.x)*(this.position.x - this.system.position.x) + (this.position.y - this.system.position.y)*(this.position.y - this.system.position.y));
+    
+    this.angle = atan2(this.system.position.y - this.position.y, this.system.position.x - this.position.x);
+    
+    if (this.system.gravityType == true){
+        this.velocity.x += cos(this.angle)*this.distanceFromSystem*this.distanceFromSystem/100000;
