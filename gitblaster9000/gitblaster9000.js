@@ -6698,3 +6698,15 @@ Particle.prototype.update = function() {
     
     this.distanceFromSystem = sqrt((this.position.x - this.system.position.x)*(this.position.x - this.system.position.x) + (this.position.y - this.system.position.y)*(this.position.y - this.system.position.y));
     
+    
+    this.velocity = createVector(0,0);
+    this.acceleration = createVector(0,0);
+
+  
+    this.distanceFromSystem = 0;
+    this.angle = 0;
+  
+    this.past = [];
+    this.lifespan = 255;
+    this.mass = 5;
+  
