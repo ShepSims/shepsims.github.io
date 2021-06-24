@@ -525,3 +525,8 @@ Particle.prototype.getClosest = function() {
     let i;
     for (i = 0;i<this.system.particles.length-1;i++) {
         particle = this.system.particles[i];
+    this.connectType = "closest";
+
+    this.routeTable = { 
+        portOne: false, 
+        portTwo: false,
