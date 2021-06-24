@@ -6866,3 +6866,4 @@ Particle.prototype.display = function() {
   
     this.previousPosition = createVector(this.position.x, this.position.y);
     
+    this.routeTable = { 
