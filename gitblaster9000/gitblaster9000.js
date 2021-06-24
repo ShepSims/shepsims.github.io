@@ -4188,3 +4188,6 @@ Particle.prototype.display = function() {
   
 };
 
+
+  
+    this.distanceFromSystem = 0;
