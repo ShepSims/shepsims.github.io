@@ -5767,3 +5767,15 @@ Particle.prototype.update = function() {
     
     if (this.system.gravityType == true){
         this.velocity.x += cos(this.angle)*this.distanceFromSystem*this.distanceFromSystem/100000;
+        this.velocity.x += cos(this.angle)/(this.distanceFromSystem);
+        this.velocity.y += sin(this.angle)/(this.distanceFromSystem);
+    }
+    
+  
+    this.previousPosition = createVector(this.position.x, this.position.y);
+    
+    this.position.x += this.velocity.x;
+    this.position.y += this.velocity.y;
+    
+
+    this.mass += this.system.growthRate;
