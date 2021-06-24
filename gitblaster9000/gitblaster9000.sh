@@ -24,7 +24,6 @@ do
 	sed -n $lineNumber,$lineNumber2'p' ../gravity/js/particle.js >> gitblaster9000.js #Whatever fil 
 	git add .
 	git commit -m "copy lines $lineNumber to $lineNumber2 to gitblaster9000.js"
-	sleep 2
 done
 
 echo
