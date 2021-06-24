@@ -1177,3 +1177,8 @@ Particle.prototype.display = function() {
     this.distanceFromSystem = 0;
     this.angle = 0;
   
+    this.connectType = "closest";
+
+    this.routeTable = { 
+        portOne: false, 
+        portTwo: false,
