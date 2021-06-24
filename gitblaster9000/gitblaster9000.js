@@ -3540,3 +3540,5 @@ Particle.prototype.update = function() {
     this.angle = atan2(this.system.position.y - this.position.y, this.system.position.x - this.position.x);
     
     if (this.system.gravityType == true){
+    this.mass = 5;
+  
