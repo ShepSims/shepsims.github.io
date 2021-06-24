@@ -7462,3 +7462,9 @@ Particle.prototype.update = function() {
     this.wasGettingCloser = true;
     this.connectCount = this.system.connectCount;
     
+// ----------------------------------------
+
+let Particle = function(system) {
+    this.system = system;
+    this.drawType = this.system.drawType;
+    this.growthRate = this.system.growthRate;
