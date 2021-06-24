@@ -7898,3 +7898,14 @@ Particle.prototype.update = function() {
 
     this.mass += this.system.growthRate;
     
+    this.routeTable = { 
+        portOne: false, 
+        portTwo: false,
+        portThree: false };
+
+    this.position = createVector(this.system.position.x + random(-50,50), this.system.position.y+ random(-50,50));
+    
+    this.velocity = createVector(0,0);
+    this.acceleration = createVector(0,0);
+
+  
