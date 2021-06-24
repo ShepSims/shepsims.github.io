@@ -1153,3 +1153,8 @@ Particle.prototype.display = function() {
     this.position = createVector(this.system.position.x + random(-50,50), this.system.position.y+ random(-50,50));
     
     this.acceleration = createVector(0,0);
+    } else {
+        this.velocity.x += cos(this.angle)/(this.distanceFromSystem);
+        this.velocity.y += sin(this.angle)/(this.distanceFromSystem);
+    }
+    
