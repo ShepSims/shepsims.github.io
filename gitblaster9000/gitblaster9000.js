@@ -4298,3 +4298,5 @@ Particle.prototype.update = function() {
     this.position = createVector(this.system.position.x + random(-50,50), this.system.position.y+ random(-50,50));
     
     this.velocity = createVector(0,0);
+    
+    this.velocity = createVector(0,0);
