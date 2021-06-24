@@ -9601,3 +9601,10 @@ Particle.prototype.display = function() {
     if (this.mass <=0){this.mass = .1;}
 
     this.connected=false;
+    this.acceleration = createVector(0,0);
+
+  
+    this.distanceFromSystem = 0;
+    this.angle = 0;
+  
+    this.past = [];
