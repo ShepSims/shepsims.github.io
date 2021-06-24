@@ -400,3 +400,9 @@ let Particle = function(system) {
     this.mass = 5;
   
 };
+    } else {
+        this.velocity.x += cos(this.angle)/(this.distanceFromSystem);
+        this.velocity.y += sin(this.angle)/(this.distanceFromSystem);
+    }
+    
+  
