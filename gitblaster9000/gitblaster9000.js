@@ -874,3 +874,13 @@ Particle.prototype.update = function() {
 
 Particle.prototype.update = function() {
     
+
+  
+    this.distanceFromSystem = 0;
+    this.angle = 0;
+  
+    this.past = [];
+    this.lifespan = 255;
+    this.mass = 5;
+  
+};
