@@ -6695,6 +6695,30 @@ fieldset:disabled .btn {
 .d-none {
 	display: none !important;
 }
+.skillsHolder {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: 100%;
+	padding: 45px 0 35px 0;
+}
+
+.skill {
+	margin: 0 15px 0 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.skillText {
+	text-align: center;
+	padding: 5px 0 0 0;
+	margin: 0 0 25px 0;
+	width: 100%;
+}
 
 .shadow {
 	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
