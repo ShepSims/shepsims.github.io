@@ -19,12 +19,13 @@ function setup() {
     
     controls = "\n     \
 --------------------------\n     \
-          BASIC\n     \
+          GENERAL\n     \
 --------------------------\n\n     \
 right - add particle\n     \
 left - pop particle\n     \
 up - increase growthRate\n     \
 down - increase growthRate\n\n     \
+m - show this menu   \n     \
 h - hide cursor \n     \
 c - clean the sketchboard\n     \
 r - reset\n\n     \
@@ -203,7 +204,7 @@ function keyPressed() {
         system = new System(mouseX, mouseY);
     }
     
-    if (key == 'h'){
+    if (key == 'm'){
         menu = !menu;
         if (menu){
             text(controls, 10, 25, 1000, 1000);
