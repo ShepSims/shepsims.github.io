@@ -13,6 +13,8 @@ function setup() {
     play = true;
     menu = false;
     start = true;
+    c = true;
+    cursor(CROSS);
     
     
     controls = "\n     \
@@ -23,6 +25,7 @@ right - add particle\n     \
 left - pop particle\n     \
 up - increase growthRate\n     \
 down - increase growthRate\n\n     \
+h - hide cursor \n     \
 c - clean the sketchboard\n     \
 r - reset\n\n     \
 --------------------------\n     \
@@ -119,6 +122,16 @@ function keyPressed() {
             loop();
         }
         play=!play;
+    }
+    if (key == 'h'){
+        if (c){
+            noCursor();
+        }
+        else {
+            cursor(CROSS);
+        }
+        c=!c;
+        console.log(c)
     }
     
     
