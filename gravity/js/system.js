@@ -4,7 +4,7 @@
 
 let System = function(x, y){
     this.drawType = 'line';
-    this.gravityType = true;
+    this.gravityType = 1   // ['normal', 'invert', 'userPoints', 'middle 4']
     this.trace = true;
     this.detached = false;
     this.sticks = false;
@@ -20,6 +20,8 @@ let System = function(x, y){
     this.growthRate = .01;
            
     this.particles = [];
+
+    this.gravityPoints = [];
   
 };
 
@@ -95,7 +97,6 @@ System.prototype.connect = function() {
             p2 = this.particles[i+1];
 
             for (let port in p2.routeTable){ 
-                print(port)
                 if (p2.routeTable[port] == false){
                     line(p.position.x, p.position.y, p2.position.x, p2.position.y)
                     p.routeTable.portOne = true;
@@ -139,3 +140,12 @@ System.prototype.popParticle = function() {
     }
 };
   
+System.prototype.addGravityPoint = function() {
+    x = mouseX
+    y = mouseY
+    this.gravityPoints = append(this.gravityPoints, createVector(x, y))
+};
+
+System.prototype.removeGravityPoint = function() {
+    this.gravityPoints = shorten(this.gravityPoints)
+};

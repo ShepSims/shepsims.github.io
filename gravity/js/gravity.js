@@ -110,7 +110,18 @@ function keyPressed() {
         save('drawing.jpg');
     }
     if (key == 'g'){
-        system.gravityType = !system.gravityType;
+
+        if (system.gravityType == 4) {  // if we are at end of types reset
+            system.gravityType = 1
+        } else {
+            system.gravityType += 1 // else move type to next from [ normal, inverse, user-defnied gravity list, middle 4]
+        }
+    }
+    if (key == 'a'){
+        system.gravityPoints = append(system.gravityPoints, createVector(mouseX, mouseY))
+    }
+    if (key == 'd'){
+        system.gravityPoints = shorten(system.gravityPoints)
     }
     if (key == 't'){
         system.trace = !system.trace;

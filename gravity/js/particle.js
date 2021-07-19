@@ -6,6 +6,7 @@ let Particle = function(system) {
     this.system = system;
     this.drawType = this.system.drawType;
     this.growthRate = this.system.growthRate;
+    this.gravityType = 1
     this.connectType = "closest";
 
     this.routeTable = { 
@@ -20,7 +21,7 @@ let Particle = function(system) {
 
   
     this.distanceFromSystem = 0;
-    this.angle = 0;
+    this.angleFromCursor = 0;
   
     this.past = [];
     this.lifespan = 255;
@@ -37,17 +38,37 @@ Particle.prototype.update = function() {
     
     this.distanceFromSystem = sqrt((this.position.x - this.system.position.x)*(this.position.x - this.system.position.x) + (this.position.y - this.system.position.y)*(this.position.y - this.system.position.y));
     
-    this.angle = atan2(this.system.position.y - this.position.y, this.system.position.x - this.position.x);
+    this.angleFromCursor = atan2(this.system.position.y - this.position.y, this.system.position.x - this.position.x);
     
-    if (this.system.gravityType == true){
-        this.velocity.x += cos(this.angle)*this.distanceFromSystem*this.distanceFromSystem/100000;
-        this.velocity.y += sin(this.angle)*this.distanceFromSystem*this.distanceFromSystem/100000;
-    } else {
-        this.velocity.x += cos(this.angle)/(this.distanceFromSystem);
-        this.velocity.y += sin(this.angle)/(this.distanceFromSystem);
+    if (this.system.gravityType == 1 || (system.gravityPoints.length == 0 && ! this.system.gravityType == 2 )) {
+        console.log("Expected 1 or 4, got ",this.system.gravityType)
+        this.velocity.x += cos(this.angleFromCursor)*this.distanceFromSystem*this.distanceFromSystem/100000;
+        this.velocity.y += sin(this.angleFromCursor)*this.distanceFromSystem*this.distanceFromSystem/100000;
+    } 
+    
+    else if (this.system.gravityType == 2){
+        console.log("Expected 2, got ",this.system.gravityType)
+        this.velocity.x += cos(this.angleFromCursor)/(this.distanceFromSystem);
+        this.velocity.y += sin(this.angleFromCursor)/(this.distanceFromSystem);
+    } 
+
+    else{
+        for (let i = 0; i < this.system.gravityPoints.length; i++) {
+            console.log("Pos: ", this.position.x, "\n\n\nPoint: ", this.system.gravityPoints[i].x,this.system.gravityPoints[i].y )
+            
+
+            distanceFromPoint = sqrt((this.position.x - this.system.gravityPoints[i].x)*(this.position.x - this.system.gravityPoints[i].y) + (this.position.y - this.system.gravityPoints[i].y)*(this.position.y - this.system.gravityPoints[i].y));
+            angleFromPoint = atan2(this.system.gravityPoints[i].y - this.position.y, this.system.gravityPoints[i].x - this.position.x);
+
+            console.log("Point " , i, " distance ", distanceFromPoint, i, " angle ",angleFromPoint)
+
+            this.velocity.x += cos(angleFromPoint)*distanceFromPoint*distanceFromPoint/100000;
+            this.velocity.y += sin(angleFromPoint)*distanceFromPoint*distanceFromPoint/100000;
+
+            
+        }
     }
     
-  
     this.previousPosition = createVector(this.position.x, this.position.y);
     
     this.position.x += this.velocity.x;
