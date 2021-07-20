@@ -9,6 +9,7 @@ let System = function(x, y){
     this.detached = false;
     this.sticks = false;
     this.pairs = false;
+    this.hide = false
 
     this.connectType = null;
     this.connectCount = 1;
@@ -29,6 +30,7 @@ let System = function(x, y){
 
 System.prototype.run = function() {
 
+
     // If not tracing, reset background and redisplay menu
     if (!this.trace){
         background(BACKGROUND);
@@ -36,7 +38,11 @@ System.prototype.run = function() {
         text(controls, 10, 25, 1000, 1000);
     }
     }
-    
+    if (system.gravityType >2 && this.hide == false){
+        for (let i in system.gravityPoints){
+            ellipse(system.gravityPoints[i].x, system.gravityPoints[i].y, 5);
+        }
+    }
     // Set system position
     this.position.x = mouseX;
     this.position.y = mouseY;
@@ -53,11 +59,6 @@ System.prototype.run = function() {
 
         // increment system mass
         this.mass += particle.mass;
-        if (system.gravityType >2){
-        for (let i in system.gravityPoints){
-            ellipse(system.gravityPoints[i].x, system.gravityPoints[i].y, 5);
-        }
-    }
     }
     // 
     this.mass /= this.particles.length/5;

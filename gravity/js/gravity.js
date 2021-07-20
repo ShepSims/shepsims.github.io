@@ -122,7 +122,17 @@ function keyPressed() {
         system.gravityPoints = append(system.gravityPoints, createVector(mouseX, mouseY))
     }
     if (key == 'd'){
-        system.gravityPoints = shorten(system.gravityPoints)
+        let mindist = 100000000000
+        let index = -1
+        for (let i in system.gravityPoints) {
+            distanceFromSystem = sqrt((system.gravityPoints[i].x - mouseX)*(system.gravityPoints[i].x - mouseX) + (mouseY - system.gravityPoints[i].y)*(mouseY - system.gravityPoints[i].y));
+            if (distanceFromSystem < mindist){ mindist = distanceFromSystem; index = i}
+        }
+        let index2 = system.gravityPoints.length-1;
+        let old = system.gravityPoints[index];
+        system.gravityPoints[index] = system.gravityPoints[index2];
+        system.gravityPoints[index2] = old;
+        system.gravityPoints = shorten(system.gravityPoints);
     }
     if (key == 't'){
         system.trace = !system.trace;
@@ -139,9 +149,11 @@ function keyPressed() {
     if (key == 'h'){
         if (c){
             noCursor();
+            system.hide = true
         }
         else {
             cursor(CROSS);
+            system.hide = false
         }
         c=!c;
         console.log(c)
