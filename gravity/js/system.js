@@ -53,6 +53,11 @@ System.prototype.run = function() {
 
         // increment system mass
         this.mass += particle.mass;
+        if (system.gravityType >2){
+        for (let i in system.gravityPoints){
+            ellipse(system.gravityPoints[i].x, system.gravityPoints[i].y, 5);
+        }
+    }
     }
     // 
     this.mass /= this.particles.length/5;

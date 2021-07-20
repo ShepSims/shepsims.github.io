@@ -95,10 +95,11 @@ function keyPressed() {
         system.growthRate += 0.1;
     }
     if (key == 'l'){
-        system.drawType = 'line';
-    }
-    if (key =='d'){
-        system.drawType = 'dot';
+        if (system.drawType == 'line') {
+            system.drawType = 'dot';
+        }
+        else {system.drawType = 'line';}
+        
     }
     if (key == 'z'){
         system.sticks = !system.sticks;
