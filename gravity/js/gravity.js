@@ -31,6 +31,7 @@ m - show this menu   \n     \
 h - hide cursor and gravity points \n     \
 c - clear all points out of system \n     \
 r - reset\n\n     \
+x - twinkle\n\n     \
 --------------------------\n     \
           COLOR\n     \
 --------------------------\n\n     \
@@ -77,7 +78,7 @@ function draw() {
     system.run();
     if (system.connectType != null) {system.connect()}
     if (start < 5) { 
-        text(controls, 10, 25, 1000, 1000);
+        text(controls, 5, 15, 1000, 1000);
         system.popParticle()
         start ++;
     }
@@ -104,7 +105,7 @@ function keyPressed() {
             if (distanceFromSystem < mindist){ mindist = distanceFromSystem; index = i}
         }
         if (index != -1) {
-            system.gravityPoints[index].mass -= .5
+            system.gravityPoints[index].mass>1 ? system.gravityPoints[index].mass -= 1 : system.gravityPoints[index].mass = .2
         }
         
     }
@@ -116,7 +117,7 @@ function keyPressed() {
             if (distanceFromSystem < mindist){ mindist = distanceFromSystem; index = i}
         }
         if (index != - 1){
-            system.gravityPoints[index].mass += .5
+            system.gravityPoints[index].mass += 2
         }
         
     }

@@ -10,6 +10,8 @@ let System = function(x, y){
     this.sticks = false;
     this.pairs = false;
     this.hide = false
+    this.cursorGravity = true;
+    this.twinkle = false;
 
     this.connectType = null;
     this.connectCount = 1;
@@ -38,9 +40,15 @@ System.prototype.run = function() {
         text(controls, 10, 25, 1000, 1000);
     }
     }
-    if (system.gravityType >2 && this.hide == false){
+    if (this.hide == false){
         for (let i in system.gravityPoints){
-            ellipse(system.gravityPoints[i].x, system.gravityPoints[i].y, 5);
+            ellipse(system.gravityPoints[i].position.x, system.gravityPoints[i].position.y, system.gravityPoints[i].mass);
+        }
+    }
+
+    if (this.twinkle){
+        for (let i in this.gravityPoints) {
+            this.gravityPoints[i].mass += random(-.2, .2)
         }
     }
     // Set system position
@@ -144,14 +152,4 @@ System.prototype.popParticle = function() {
     if (this.particles.length > 0) {
         this.particles.shift();    
     }
-};
-  
-System.prototype.addGravityPoint = function() {
-    x = mouseX
-    y = mouseY
-    this.gravityPoints = append(this.gravityPoints, createVector(x, y))
-};
-
-System.prototype.removeGravityPoint = function() {
-    this.gravityPoints = shorten(this.gravityPoints)
 };
