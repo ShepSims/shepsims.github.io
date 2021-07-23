@@ -23,11 +23,13 @@ function setup() {
 --------------------------\n\n     \
 right - add particle\n     \
 left - pop particle\n     \
-up - increase growthRate\n     \
-down - increase growthRate\n\n     \
+up - increase dot growthRate\n     \
+down - decrease dot growthRate\n\n     \
+a - add another graivtational point\n     \
+d - delete closest gravitational point\n\n     \
 m - show this menu   \n     \
-h - hide cursor \n     \
-c - clean the sketchboard\n     \
+h - hide cursor and gravity points \n     \
+c - clear all points out of system \n     \
 r - reset\n\n     \
 --------------------------\n     \
           COLOR\n     \
@@ -44,10 +46,11 @@ w - white particles\n\n     \
 --------------------------\n     \
           MODE\n     \
 --------------------------\n\n     \
-l - add particle mode: line \n     \
+l - add particle mode: point \n     \
 d - add particle mode: dots\n     \
 z - toggle line mass\n\n     \
 t - toggle trace\n\n     \
+z - toggle cursor gravity\n     \
 --------------------------\n     \
          LINKING\n     \
 --------------------------\n\n     \
@@ -80,6 +83,10 @@ function draw() {
     }
 }
 
+function mousePressed() {
+    mouseButton == LEFT ? system.growthRate += .1 : system.growthRate -= .1
+}
+
 
 function keyPressed() {
     if (keyCode == LEFT_ARROW) {
@@ -89,10 +96,29 @@ function keyPressed() {
         system.addParticle();
     }
     if (keyCode == DOWN_ARROW) {
-        system.growthRate -= 0.1;
+        let mindist = 100000000000
+        let index = -1
+        for (let i in system.gravityPoints) {
+            console.log(system.gravityPoints[i])
+            distanceFromSystem = sqrt((system.gravityPoints[i].position.x - mouseX)*(system.gravityPoints[i].position.x - mouseX) + (mouseY - system.gravityPoints[i].position.y)*(mouseY - system.gravityPoints[i].position.y));
+            if (distanceFromSystem < mindist){ mindist = distanceFromSystem; index = i}
+        }
+        if (index != -1) {
+            system.gravityPoints[index].mass -= .5
+        }
+        
     }
     if (keyCode == UP_ARROW) {
-        system.growthRate += 0.1;
+        let mindist = 100000000000
+        let index = -1
+        for (let i in system.gravityPoints) {
+            distanceFromSystem = sqrt((system.gravityPoints[i].position.x - mouseX)*(system.gravityPoints[i].position.x - mouseX) + (mouseY - system.gravityPoints[i].position.y)*(mouseY - system.gravityPoints[i].position.y));
+            if (distanceFromSystem < mindist){ mindist = distanceFromSystem; index = i}
+        }
+        if (index != - 1){
+            system.gravityPoints[index].mass += .5
+        }
+        
     }
     if (key == 'l'){
         if (system.drawType == 'line') {
@@ -107,25 +133,30 @@ function keyPressed() {
     if (key =='c'){
         background(BACKGROUND);
     }
+    if (key =='u'){
+        system.cursorGravity=!system.cursorGravity
+    }
     if (key == 's'){
         save('drawing.jpg');
     }
+    if (key == 'x'){
+        system.twinkle = !system.twinkle
+    }
     if (key == 'g'){
-
-        if (system.gravityType == 4) {  // if we are at end of types reset
-            system.gravityType = 1
-        } else {
-            system.gravityType += 1 // else move type to next from [ normal, inverse, user-defnied gravity list, middle 4]
-        }
+        system.gravityType == 2 ? system.gravityType = 1 : system.gravityType = 2  // else move type to next from [ normal, inverse, user-defnied gravity list, middle 4]
     }
     if (key == 'a'){
-        system.gravityPoints = append(system.gravityPoints, createVector(mouseX, mouseY))
+        system.gravityPoints = append(system.gravityPoints, {position:createVector(mouseX, mouseY), mass:3})
+    }
+    if (key == 'a'){
+        system.gravityPoints = append(system.gravityPoints, {position:createVector(mouseX, mouseY), mass:3})
     }
     if (key == 'd'){
         let mindist = 100000000000
         let index = -1
         for (let i in system.gravityPoints) {
-            distanceFromSystem = sqrt((system.gravityPoints[i].x - mouseX)*(system.gravityPoints[i].x - mouseX) + (mouseY - system.gravityPoints[i].y)*(mouseY - system.gravityPoints[i].y));
+            console.log(system.gravityPoints)
+            distanceFromSystem = sqrt((system.gravityPoints[i].position.x - mouseX)*(system.gravityPoints[i].position.x - mouseX) + (mouseY - system.gravityPoints[i].position.y)*(mouseY - system.gravityPoints[i].position.y));
             if (distanceFromSystem < mindist){ mindist = distanceFromSystem; index = i}
         }
         let index2 = system.gravityPoints.length-1;

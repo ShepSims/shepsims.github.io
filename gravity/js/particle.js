@@ -37,32 +37,33 @@ Particle.prototype.update = function() {
     this.distanceFromSystem = sqrt((this.position.x - this.system.position.x)*(this.position.x - this.system.position.x) + (this.position.y - this.system.position.y)*(this.position.y - this.system.position.y));
     this.angleFromCursor = atan2(this.system.position.y - this.position.y, this.system.position.x - this.position.x);
     
-    if (this.system.gravityType == 1 || (system.gravityPoints.length == 0 && ! this.system.gravityType == 2 )) {
-        this.velocity.x += cos(this.angleFromCursor)*this.distanceFromSystem*this.distanceFromSystem/100000;
-        this.velocity.y += sin(this.angleFromCursor)*this.distanceFromSystem*this.distanceFromSystem/100000;
-    } 
     
-    else if (this.system.gravityType == 2){
+    
+    
+
+    if (this.system.gravityType == 1) {
+        for (let i = 0; i < this.system.gravityPoints.length; i++) {  
+            this.distanceFromPoint = sqrt((this.position.x - this.system.gravityPoints[i].position.x)*(this.position.x - this.system.gravityPoints[i].position.x) + (this.position.y - this.system.gravityPoints[i].position.y)*(this.position.y - this.system.gravityPoints[i].position.y));
+            this.angleFromPoint = atan2(this.system.gravityPoints[i].position.y - this.position.y, this.system.gravityPoints[i].position.x - this.position.x);
+            this.velocity.x += cos(this.angleFromPoint)*this.distanceFromPoint*this.distanceFromPoint*this.system.gravityPoints[i].mass/100000;
+            this.velocity.y += sin(this.angleFromPoint)*this.distanceFromPoint*this.distanceFromPoint*this.system.gravityPoints[i].mass/100000;
+        }
+        if (this.system.cursorGravity == true) {
+            this.velocity.x += cos(this.angleFromCursor)*this.distanceFromSystem*this.distanceFromSystem/100000;
+            this.velocity.y += sin(this.angleFromCursor)*this.distanceFromSystem*this.distanceFromSystem/100000;
+        } 
+    }
+    if (this.system.gravityType == 2) {
+        for (let i = 0; i < this.system.gravityPoints.length; i++) {  
+            this.distanceFromPoint = sqrt((this.position.x - this.system.gravityPoints[i].position.x)*(this.position.x - this.system.gravityPoints[i].position.x) + (this.position.y - this.system.gravityPoints[i].position.y)*(this.position.y - this.system.gravityPoints[i].position.y));
+            this.angleFromPoint = atan2(this.system.gravityPoints[i].position.y - this.position.y, this.system.gravityPoints[i].position.x - this.position.x);
+            this.velocity.x += cos(this.angleFromPoint)/(this.distanceFromPoint)*this.system.gravityPoints[i].mass;
+            this.velocity.y += sin(this.angleFromPoint)/(this.distanceFromPoint)*this.system.gravityPoints[i].mass;
+    }
+    if (this.system.gravityType == 2 && this.system.cursorGravity == true){
         this.velocity.x += cos(this.angleFromCursor)/(this.distanceFromSystem);
         this.velocity.y += sin(this.angleFromCursor)/(this.distanceFromSystem);
     } 
-
-    else if (this.system.gravityType == 3) {
-        for (let i = 0; i < this.system.gravityPoints.length; i++) {  
-            this.distanceFromSystem = sqrt((this.position.x - this.system.gravityPoints[i].x)*(this.position.x - this.system.gravityPoints[i].x) + (this.position.y - this.system.gravityPoints[i].y)*(this.position.y - this.system.gravityPoints[i].y));
-            this.angleFromCursor = atan2(this.system.gravityPoints[i].y - this.position.y, this.system.gravityPoints[i].x - this.position.x);
-            this.velocity.x += cos(this.angleFromCursor)*this.distanceFromSystem*this.distanceFromSystem/100000;
-            this.velocity.y += sin(this.angleFromCursor)*this.distanceFromSystem*this.distanceFromSystem/100000;
-        }
-    }
-    else {
-        for (let i = 0; i < this.system.gravityPoints.length; i++) {  
-            this.distanceFromSystem = sqrt((this.position.x - this.system.gravityPoints[i].x)*(this.position.x - this.system.gravityPoints[i].x) + (this.position.y - this.system.gravityPoints[i].y)*(this.position.y - this.system.gravityPoints[i].y));
-            this.angleFromCursor = atan2(this.system.gravityPoints[i].y - this.position.y, this.system.gravityPoints[i].x - this.position.x);
-            this.velocity.x += cos(this.angleFromCursor)/(this.distanceFromSystem);
-            this.velocity.y += sin(this.angleFromCursor)/(this.distanceFromSystem);
-
-    }
 }
     
     this.previousPosition = createVector(this.position.x, this.position.y);
