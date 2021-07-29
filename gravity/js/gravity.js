@@ -99,25 +99,25 @@ function keyPressed() {
     if (keyCode == DOWN_ARROW) {
         let mindist = 100000000000
         let index = -1
-        for (let i in system.gravityPoints) {
-            console.log(system.gravityPoints[i])
-            distanceFromSystem = sqrt((system.gravityPoints[i].position.x - mouseX)*(system.gravityPoints[i].position.x - mouseX) + (mouseY - system.gravityPoints[i].position.y)*(mouseY - system.gravityPoints[i].position.y));
+        for (let i in system.planets) {
+            console.log(system.planets[i])
+            distanceFromSystem = sqrt((system.planets[i].position.x - mouseX)*(system.planets[i].position.x - mouseX) + (mouseY - system.planets[i].position.y)*(mouseY - system.planets[i].position.y));
             if (distanceFromSystem < mindist){ mindist = distanceFromSystem; index = i}
         }
         if (index != -1) {
-            system.gravityPoints[index].mass>1 ? system.gravityPoints[index].mass -= 1 : system.gravityPoints[index].mass = .2
+            system.planets[index].mass>1 ? system.planets[index].mass -= 1 : system.planets[index].mass = .2
         }
         
     }
     if (keyCode == UP_ARROW) {
         let mindist = 100000000000
         let index = -1
-        for (let i in system.gravityPoints) {
-            distanceFromSystem = sqrt((system.gravityPoints[i].position.x - mouseX)*(system.gravityPoints[i].position.x - mouseX) + (mouseY - system.gravityPoints[i].position.y)*(mouseY - system.gravityPoints[i].position.y));
+        for (let i in system.planets) {
+            distanceFromSystem = sqrt((system.planets[i].position.x - mouseX)*(system.planets[i].position.x - mouseX) + (mouseY - system.planets[i].position.y)*(mouseY - system.planets[i].position.y));
             if (distanceFromSystem < mindist){ mindist = distanceFromSystem; index = i}
         }
         if (index != - 1){
-            system.gravityPoints[index].mass += 2
+            system.planets[index].mass += 2
         }
         
     }
@@ -134,6 +134,12 @@ function keyPressed() {
     if (key =='c'){
         background(BACKGROUND);
     }
+    if (key =='f'){
+        for (let p in system.planets) {
+            system.planets[p].velocity.x = 0;
+            system.planets[p].velocity.y = 0;
+        }
+    }
     if (key =='u'){
         system.cursorGravity=!system.cursorGravity
     }
@@ -147,24 +153,11 @@ function keyPressed() {
         system.gravityType == 2 ? system.gravityType = 1 : system.gravityType = 2  // else move type to next from [ normal, inverse, user-defnied gravity list, middle 4]
     }
     if (key == 'a'){
-        system.gravityPoints = append(system.gravityPoints, {position:createVector(mouseX, mouseY), mass:3})
-    }
-    if (key == 'a'){
-        system.gravityPoints = append(system.gravityPoints, {position:createVector(mouseX, mouseY), mass:3})
+        console.log('s')
+        system.addPlanet();
     }
     if (key == 'd'){
-        let mindist = 100000000000
-        let index = -1
-        for (let i in system.gravityPoints) {
-            console.log(system.gravityPoints)
-            distanceFromSystem = sqrt((system.gravityPoints[i].position.x - mouseX)*(system.gravityPoints[i].position.x - mouseX) + (mouseY - system.gravityPoints[i].position.y)*(mouseY - system.gravityPoints[i].position.y));
-            if (distanceFromSystem < mindist){ mindist = distanceFromSystem; index = i}
-        }
-        let index2 = system.gravityPoints.length-1;
-        let old = system.gravityPoints[index];
-        system.gravityPoints[index] = system.gravityPoints[index2];
-        system.gravityPoints[index2] = old;
-        system.gravityPoints = shorten(system.gravityPoints);
+        system.popPlanet();
     }
     if (key == 't'){
         system.trace = !system.trace;
@@ -246,11 +239,10 @@ function keyPressed() {
             system.connectType = null;
         } else { system.connectType = "closest"; }
     }
-
-    if (key == 'u'){
-        if (system.connectType == "random") {
+    if (key == '0'){
+        if (system.connectType == "planets") {
             system.connectType = null;
-        } else { system.connectType = "random"; }
+        } else { system.connectType = "planets"; }
     }
     
     if (key == "q"){

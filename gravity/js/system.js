@@ -3,28 +3,27 @@
 // ----------------------------------------
 
 let System = function(x, y){
-    this.drawType = 'line';
+    this.drawType = 'line'; // ['line', 'dot']
     this.gravityType = 1   // ['normal', 'invert', 'userPoints', 'middle 4']
     this.trace = true;
     this.detached = false;
     this.sticks = false;
     this.pairs = false;
     this.hide = false
-    this.cursorGravity = true;
-    this.twinkle = false;
+    this.cursorGravity = false;
+    this.twinkle = false; // make all planets in system grow and shrink randomly
 
     this.connectType = null;
     this.connectCount = 1;
     
     this.position=createVector(x,y);
     this.velocity = createVector(0,0);
-    this.acceleration = createVector(0,0);
     this.mass = 0;
     this.growthRate = .01;
            
     this.particles = [];
 
-    this.gravityPoints = [];
+    this.planets = [];
   
 };
 
@@ -41,19 +40,28 @@ System.prototype.run = function() {
     }
     }
     if (this.hide == false){
-        for (let i in system.gravityPoints){
-            ellipse(system.gravityPoints[i].position.x, system.gravityPoints[i].position.y, system.gravityPoints[i].mass);
+        for (let i in system.planets){
+            ellipse(system.planets[i].position.x, system.planets[i].position.y, system.planets[i].mass);
         }
     }
 
     if (this.twinkle){
-        for (let i in this.gravityPoints) {
-            this.gravityPoints[i].mass += random(-.2, .2)
+        for (let i in this.planets) {
+            this.planets[i].mass += random(-.2, .2)
         }
     }
     // Set system position
     this.position.x = mouseX;
     this.position.y = mouseY;
+
+    for (let i =  this.planets.length-1; i >= 0; i--) {
+        let planet = this.planets[i];
+        planet.update();
+        planet.display();
+
+        // increment system mass
+        this.mass += system.mass;
+    }
 
     // Update Particles positions and display
     for (let i =  this.particles.length-1; i >= 0; i--) {
@@ -81,7 +89,7 @@ System.prototype.connect = function() {
 
 
         if (this.connectType == "closest"){
-            // if closest connections enabled, get particles nearest neighbor
+            // if closest connections enabled, get particles nearest neighbor and draw line between them
             let connections = p.getClosest(); 
             if (connections){ 
                 let j = 0;
@@ -89,9 +97,11 @@ System.prototype.connect = function() {
                     line(p.position.x, p.position.y, connections[point].position.x, connections[point].position.y);
                 }
             } 
+        // connects particles next to each other in order of creation
         } else if (this.connectType == "pairs") {
             this.pair();
-        }
+
+        } 
     }
 
 
@@ -152,4 +162,22 @@ System.prototype.popParticle = function() {
     if (this.particles.length > 0) {
         this.particles.shift();    
     }
+};
+
+System.prototype.addPlanet = function() {
+    this.planets.push(new Planet(this));
+};
+
+System.prototype.popPlanet = function() {
+    let mindist = 100000000000
+        let index = -1
+        for (let i in system.planets) {
+            let p = system.planets[i]
+            if (p.distanceFromSystem < mindist){ mindist = p.distanceFromSystem; index = i}
+        }
+        let index2 = system.planets.length-1;
+        let old = system.planets[index];
+        system.planets[index] = system.planets[index2];
+        system.planets[index2] = old;
+        system.planets = shorten(system.planets);
 };

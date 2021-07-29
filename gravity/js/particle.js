@@ -13,7 +13,7 @@ let Particle = function(system) {
         portTwo: false,
         portThree: false };
 
-    this.position = createVector(this.system.position.x + random(-50,50), this.system.position.y+ random(-50,50));
+    this.position = this.system.gravityType == 1 ? createVector(mouseX, mouseY) : createVector(this.system.position.x + random(-50,50), this.system.position.y+ random(-50,50));
     
     this.velocity = createVector(0,0);
     this.acceleration = createVector(0,0);
@@ -42,11 +42,16 @@ Particle.prototype.update = function() {
     
 
     if (this.system.gravityType == 1) {
-        for (let i = 0; i < this.system.gravityPoints.length; i++) {  
-            this.distanceFromPoint = sqrt((this.position.x - this.system.gravityPoints[i].position.x)*(this.position.x - this.system.gravityPoints[i].position.x) + (this.position.y - this.system.gravityPoints[i].position.y)*(this.position.y - this.system.gravityPoints[i].position.y));
-            this.angleFromPoint = atan2(this.system.gravityPoints[i].position.y - this.position.y, this.system.gravityPoints[i].position.x - this.position.x);
-            this.velocity.x += cos(this.angleFromPoint)*this.distanceFromPoint*this.distanceFromPoint*this.system.gravityPoints[i].mass/100000;
-            this.velocity.y += sin(this.angleFromPoint)*this.distanceFromPoint*this.distanceFromPoint*this.system.gravityPoints[i].mass/100000;
+        for (let i = 0; i < this.system.planets.length; i++) {  
+            this.distanceFromPoint = sqrt((this.position.x - this.system.planets[i].position.x)*(this.position.x - this.system.planets[i].position.x) + (this.position.y - this.system.planets[i].position.y)*(this.position.y - this.system.planets[i].position.y));
+            this.angleFromPoint = atan2(this.system.planets[i].position.y - this.position.y, this.system.planets[i].position.x - this.position.x);
+            this.velocity.x += cos(this.angleFromPoint)*this.distanceFromPoint*this.distanceFromPoint*this.system.planets[i].mass/100000;
+            this.velocity.y += sin(this.angleFromPoint)*this.distanceFromPoint*this.distanceFromPoint*this.system.planets[i].mass/100000;
+
+            if (this.system.connectType == 'planets') {
+                line(this.position.x, this.position.y, this.position.x+cos(this.angleFromPoint)*this.distanceFromPoint, this.position.y-sin(this.angleFromPoint)*this.distanceFromPoint);
+                print(this.distanceFromPoint)
+            }
         }
         if (this.system.cursorGravity == true) {
             this.velocity.x += cos(this.angleFromCursor)*this.distanceFromSystem*this.distanceFromSystem/100000;
@@ -54,16 +59,22 @@ Particle.prototype.update = function() {
         } 
     }
     if (this.system.gravityType == 2) {
-        for (let i = 0; i < this.system.gravityPoints.length; i++) {  
-            this.distanceFromPoint = sqrt((this.position.x - this.system.gravityPoints[i].position.x)*(this.position.x - this.system.gravityPoints[i].position.x) + (this.position.y - this.system.gravityPoints[i].position.y)*(this.position.y - this.system.gravityPoints[i].position.y));
-            this.angleFromPoint = atan2(this.system.gravityPoints[i].position.y - this.position.y, this.system.gravityPoints[i].position.x - this.position.x);
-            this.velocity.x += cos(this.angleFromPoint)/(this.distanceFromPoint)*this.system.gravityPoints[i].mass;
-            this.velocity.y += sin(this.angleFromPoint)/(this.distanceFromPoint)*this.system.gravityPoints[i].mass;
+        for (let i = 0; i < this.system.planets.length; i++) {  
+            this.distanceFromPoint = sqrt((this.position.x - this.system.planets[i].position.x)*(this.position.x - this.system.planets[i].position.x) + (this.position.y - this.system.planets[i].position.y)*(this.position.y - this.system.planets[i].position.y));
+            this.angleFromPoint = atan2(this.system.planets[i].position.y - this.position.y, this.system.planets[i].position.x - this.position.x);
+            this.velocity.x += cos(this.angleFromPoint)/(this.distanceFromPoint)*this.system.planets[i].mass;
+            this.velocity.y += sin(this.angleFromPoint)/(this.distanceFromPoint)*this.system.planets[i].mass;
+            print(this.angleFromPoint);
+
+            if (this.system.connectType == 'planets') {
+                line(this.position.x, this.position.y, cos(this.angleFromPoint)*this.distanceFromPoint/5, sin(this.angleFromPoint)*this.distanceFromPoint/5);
+            }
     }
     if (this.system.gravityType == 2 && this.system.cursorGravity == true){
         this.velocity.x += cos(this.angleFromCursor)/(this.distanceFromSystem);
         this.velocity.y += sin(this.angleFromCursor)/(this.distanceFromSystem);
     } 
+    
 }
     
     this.previousPosition = createVector(this.position.x, this.position.y);
