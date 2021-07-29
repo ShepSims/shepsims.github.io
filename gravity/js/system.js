@@ -10,7 +10,7 @@ let System = function(x, y){
     this.sticks = false;
     this.pairs = false;
     this.hide = false
-    this.cursorGravity = false;
+    this.cursorGravity = true;
     this.twinkle = false; // make all planets in system grow and shrink randomly
 
     this.connectType = null;
