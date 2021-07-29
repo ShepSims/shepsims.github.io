@@ -21,17 +21,19 @@ function setup() {
 --------------------------\n     \
           GENERAL\n     \
 --------------------------\n\n     \
+u - toggle cursor gravity   \n     \
 right - add particle\n     \
 left - pop particle\n     \
-up - increase dot growthRate\n     \
-down - decrease dot growthRate\n\n     \
-a - add another graivtational point\n     \
-d - delete closest gravitational point\n\n     \
+up - increase nearest planet size\n     \
+down - decrease nearest planet size\n\n     \
+a - add another planet\n     \
+d - delete closest planet\n\n     \
 m - show this menu   \n     \
-h - hide cursor and gravity points \n     \
-c - clear all points out of system \n     \
-r - reset\n\n     \
+h - hide cursor and planets \n     \
+c - clear screen \n     \
+r - reset system\n\n     \
 x - twinkle\n\n     \
+f - freeze planets\n\n     \
 --------------------------\n     \
           COLOR\n     \
 --------------------------\n\n     \
@@ -51,7 +53,7 @@ l - add particle mode: point \n     \
 d - add particle mode: dots\n     \
 z - toggle line mass\n\n     \
 t - toggle trace\n\n     \
-z - toggle cursor gravity\n     \
+z - draw sticks\n     \
 --------------------------\n     \
          LINKING\n     \
 --------------------------\n\n     \
