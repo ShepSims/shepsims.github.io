@@ -171,13 +171,14 @@ System.prototype.addPlanet = function() {
 System.prototype.popPlanet = function() {
     let mindist = 100000000000
         let index = -1
-        for (let i in system.planets) {
-            let p = system.planets[i]
-            if (p.distanceFromSystem < mindist){ mindist = p.distanceFromSystem; index = i}
+        for (let i in this.planets) {
+            let p = this.planets[i]
+            let dist = sqrt((p.position.x - mouseX)*(p.position.x - mouseX) + (p.position.y - mouseY)*(p.position.y - mouseY));
+            if (dist < mindist){ mindist = dist; index = i}
         }
-        let index2 = system.planets.length-1;
-        let old = system.planets[index];
-        system.planets[index] = system.planets[index2];
-        system.planets[index2] = old;
-        system.planets = shorten(system.planets);
+        let index2 = this.planets.length-1;
+        let old = this.planets[index];
+        this.planets[index] = this.planets[index2];
+        this.planets[index2] = old;
+        this.planets = shorten(this.planets);
 };
