@@ -1,7 +1,7 @@
 body {
 	font-family: Arial;
 	padding: 20px;
-	background: #f1f1f1;
+	background: linen;
 }
 
 /* Header/Blog Title */
@@ -9,14 +9,14 @@ body {
 	padding: 30px;
 	font-size: 40px;
 	text-align: center;
-	background: grey;
+	background: linen;
 }
 
 /* Create two unequal columns that floats next to each other */
 /* Left column */
 .leftcolumn {
 	float: left;
-	width: 75%;
+	width: 78%;
 	background-color: lightblue;
 }
 
@@ -25,23 +25,23 @@ body {
 	float: right;
 	width: 20%;
 	padding-left: 20px;
-	background-color: lightskyblue;
+	background-color: lightblue;
 }
 
 .image {
-	background-color: #aaa;
+	background-color: linen;
 	width: 95%;
 	padding: 20px;
 }
 
 /* Add a card effect for articles */
 .card {
-	background-color: white;
+	background-color: linen;
 	padding: 20px;
 	margin-top: 20px;
 }
 .date {
-	background-color: white;
+	background-color: linen;
 	float: right;
 	font-size: 10;
 	padding: 2px;
@@ -69,10 +69,6 @@ body {
 	font-size: 1.25rem;
 	text-decoration: none;
 	white-space: nowrap;
-}
-#mainNav .navbar-nav .nav-item .nav-link:hover,
-#mainNav .navbar-nav .nav-item .nav-link:active {
-	color: #f4623a;
 }
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */

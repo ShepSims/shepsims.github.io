@@ -41,11 +41,15 @@
         <h5>Serverless architectures seem to be all the rage in the Cloud Computing world today, heres a brief discussion on why, and what they might offer you and your business. </h5>
         
         <img class="image" src="./images/drawing-38.jpg" />
-        <p>AWS Lambda, Microsoft Azure Functions, and Google Cloud Functions square up against traditional server architectures in a battle to the death.  (Just kidding, servers are still useful in some solutions)</p>
+        <p><br>AWS Lambda, Microsoft Azure Functions, and Google Cloud Functions square up against traditional server architectures in a battle to the death.  (Just kidding, servers are still useful in some solutions)</p>
 
-        <p>Traditional application server architectures contain a central server that listens on port :80 for incoming requests, and processes there.  When that server has many connections at once it can become overloaded with requests, so when you anticipate growing traffic you must provision larger and larger machines to handle these tasks, so you upgrade your server's capacity to the next price tier.   </p>
-        <p>When server traffic does not grow as expected, you pay for the anticipated space and that server capacity is wasted as the machine sits idle. When you decide to downgraed, you get hit with a spike of traffic underprepare and are still hit with </p>
-        
+        <p><br>Traditional application server architectures contain a central server that listens on port :80 for incoming requests, and processes there.  When that server has many connections at once it can become overloaded with requests, so when you anticipate growing traffic you must provision larger and larger machines to handle these tasks, so you upgrade your server's capacity to the next price tier.   </p>
+        <p>When server traffic does not grow as expected, you pay for the anticipated space and that server capacity is wasted as the machine sits idle. When you decide to downgrade a few months later after paying for wasted capacity, you get hit with a spike of traffic (yay!) but are unable to handle it (on no!), causing downtime and loss of users and revenue.   </p>
+        <p><br>How can we get around this seemingly impossible task of perfectly provisioning the correct server size?</p>
+        <p><br>You guessed it!  Go Serverless!</p>
+        <p><br>Switching from this traditional architecture to a serverless one allows you to forget about provisioning resources, letting the service provider deal with all "under the hood" logic required when scaling, so that you always pay <b>only</b> for the resources that you actually use.</p>
+        <p>Under a serverless model, you get to simply develop the APIs that your application needs, and deploy them, independant of the system or each other, and your chosen service provider will handle the rest.</p>
+        <p>You will no longer pay for unused server capacity, and will never again be underprepared for the day your app hits number 1 on the app store and gains immense traffic, as AWS, Google, or IBM will scale your functions accordingly, with predicable price points per request.</p>
       </div>
       <div class="card">
         <div class="date">

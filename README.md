@@ -1,4 +1,4 @@
-![Example](src/drawing.jpg)<br/>
+![Example](gravity/src/drawing.jpg)<br/>
 This sketch was made using this repo!<br><br>
 
 Start sketching now at [shep.blog](https://shep.blog) or [shepsims.github.io](https://shepsims.github.io)<br><br><br>
