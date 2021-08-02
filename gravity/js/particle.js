@@ -49,14 +49,13 @@ Particle.prototype.update = function() {
             this.velocity.y += sin(this.angleFromPoint)*this.distanceFromPoint*this.distanceFromPoint*this.system.planets[i].mass/100000;
 
             if (this.system.connectType == 'planets') {
-                line(this.position.x, this.position.y, this.position.x+cos(this.angleFromPoint)*this.distanceFromPoint, this.position.y-sin(this.angleFromPoint)*this.distanceFromPoint);
-                print(this.distanceFromPoint)
+                line(this.position.x, this.position.y, cos(this.angleFromPoint)/(this.distanceFromPoint)*this.system.planets[i].mass, sin(this.angleFromPoint)/(this.distanceFromPoint)*this.system.planets[i].mass);                print(this.distanceFromPoint)
             }
         }
-        if (this.system.cursorGravity == true) {
-            this.velocity.x += cos(this.angleFromCursor)*this.distanceFromSystem*this.distanceFromSystem/100000;
-            this.velocity.y += sin(this.angleFromCursor)*this.distanceFromSystem*this.distanceFromSystem/100000;
-        } 
+        // if (this.system.cursorGravity == true) {
+        //     this.velocity.x += cos(this.angleFromCursor)*this.distanceFromSystem*this.distanceFromSystem/100000;
+        //     this.velocity.y += sin(this.angleFromCursor)*this.distanceFromSystem*this.distanceFromSystem/100000;
+        // } 
     }
     if (this.system.gravityType == 2) {
         for (let i = 0; i < this.system.planets.length; i++) {  
@@ -67,13 +66,13 @@ Particle.prototype.update = function() {
             print(this.angleFromPoint);
 
             if (this.system.connectType == 'planets') {
-                line(this.position.x, this.position.y, cos(this.angleFromPoint)*this.distanceFromPoint/5, sin(this.angleFromPoint)*this.distanceFromPoint/5);
+                line(this.position.x, this.position.y, cos(this.angleFromPoint)/(this.distanceFromPoint)*this.system.planets[i].mass, sin(this.angleFromPoint)/(this.distanceFromPoint)*this.system.planets[i].mass);
             }
     }
-    if (this.system.gravityType == 2 && this.system.cursorGravity == true){
-        this.velocity.x += cos(this.angleFromCursor)/(this.distanceFromSystem);
-        this.velocity.y += sin(this.angleFromCursor)/(this.distanceFromSystem);
-    } 
+    // if (this.system.gravityType == 2 && this.system.cursorGravity == true){
+    //     this.velocity.x += cos(this.angleFromCursor)/(this.distanceFromSystem);
+    //     this.velocity.y += sin(this.angleFromCursor)/(this.distanceFromSystem);
+    // } 
     
 }
     
