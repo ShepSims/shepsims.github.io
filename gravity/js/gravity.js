@@ -16,7 +16,7 @@ function setup() {
 	cursor(CROSS);
 
 	controls =
-		"\n     \
+		"\
 --------------------------\n     \
           GENERAL\n     \
 --------------------------\n\n     \
@@ -87,7 +87,7 @@ function draw() {
 		system.popParticle();
 		start++;
 	} else if (start < 6) {
-		system.addPlanet();
+		system.addParticle();
 		start++;
 	}
 }
