@@ -1,7 +1,7 @@
 ![Example](gravity/src/drawing.jpg)<br/>
 This sketch was made using this repo!<br><br>
 
-Start sketching now at [shep.blog](https://shep.blog) or [shepsims.github.io](https://shepsims.github.io)<br><br><br>
+Start sketching now at [shep.blog/gravity](https://shep.blog) <br><br><br>
 ---------------------------------------------------------<br>
 -----------------------CONTROLS----------------------<br>
 ---------------------------------------------------------<br><br>
