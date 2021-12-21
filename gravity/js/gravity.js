@@ -20,7 +20,8 @@ function setup() {
 --------------------------\n     \
           GENERAL\n     \
 --------------------------\n\n     \
-u - toggle cursor gravity   \n     \
+u - toggle cursor planet gravity   \n     \
+j - toggle cursor particle gravity   \n     \
 right - add particle\n     \
 left - pop particle\n     \
 up - increase nearest planet size\n     \
