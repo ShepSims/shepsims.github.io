@@ -157,7 +157,10 @@ function keyPressed() {
 		}
 	}
 	if (key == 'u') {
-		system.cursorGravity = !system.cursorGravity;
+		system.cursorGravity.planets = !system.cursorGravity.planets;
+	}
+	if (key == 'j') {
+		system.cursorGravity.particles = !system.cursorGravity.particles;
 	}
 	if (key == 's') {
 		save('drawing.jpg');
