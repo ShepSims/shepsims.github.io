@@ -11,7 +11,7 @@ function setup() {
 	fill(255);
 	stroke(255);
 	i = 4;
-	shapes = [new Shape(i)];
+	current = new Drawing();
 }
 
 // resize store if user changes window size
@@ -20,18 +20,18 @@ function windowResized() {
 }
 
 // draw
-function draw() {
-	for (s in shapes) {
-		shapes[s].move(createVector(mouseX, mouseY));
-	}
-}
+// function draw() {
+// }
 
 function mousePressed() {
-	shapes.push(new Shape(i));
+	current.addPoint();
 }
 
 function keyPressed() {
 	if (key == 'c') {
 		background(0);
+	}
+	if (key == 'g') {
+		current.draw();
 	}
 }
