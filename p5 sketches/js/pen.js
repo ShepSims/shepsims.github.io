@@ -10,9 +10,6 @@ let Pen = function () {
 };
 
 Pen.prototype.update = function () {
-	fill(255);
-	stroke(255);
-
 	this.dx = this.position.x - this.destination.x;
 	this.dy = this.position.y - this.destination.y;
 
