@@ -299,3 +299,7 @@ function keyPressed() {
 		BACKGROUND = 255 - BACKGROUND;
 	}
 }
+function mouseWheel(event) {
+	console.log(event.delta);
+	copy(get(), 0, 0, width + event.delta / abs(event.delta), height, event.delta / abs(event.delta), 0, width, height);
+}
