@@ -138,6 +138,9 @@ function keyPressed() {
 			system.planets[index].mass += 2;
 		}
 	}
+	if (keyCode == ESCAPE) {
+		window.location.href = '../../groceries/html/groceries.html';
+	}
 	if (key == 'l') {
 		if (system.drawType == 'line') {
 			system.drawType = 'dot';
@@ -300,6 +303,6 @@ function keyPressed() {
 	}
 }
 function mouseWheel(event) {
-	console.log(event.delta);
-	copy(get(), 0, 0, width + event.delta / abs(event.delta), height, event.delta / abs(event.delta), 0, width, height);
+	window.location.href = '..../groceries/html/groceries.html';
+	//copy(get(), 0, 0, width + event.delta / abs(event.delta), height, event.delta / abs(event.delta), 0, width, height);
 }

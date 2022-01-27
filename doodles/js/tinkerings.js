@@ -55,4 +55,7 @@ function keyPressed() {
 	if (key == 's') {
 		save('drawing.jpg');
 	}
+	if (key == 'q') {
+		window.location.href = '../../gravity/html/gravity.html';
+	}
 }
