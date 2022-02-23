@@ -6,7 +6,7 @@ function setup() {
 	canvas = createCanvas(windowWidth - 50, windowHeight - 50);
 
 	// image(img, 0, 0);
-	bull = new Bull(50, 50);
+	character = new Character(50, 50);
 	lineCoords = [25, windowHeight - 150, 150, windowHeight - 150];
 	rectMode(CORNERS);
 	door = [windowWidth - 150, windowHeight - 750, windowWidth - 75, windowHeight - 850];
@@ -15,88 +15,97 @@ function setup() {
 	angle = 0;
 	x = 0;
 	y = 0;
+	won = false;
+	textSize(30);
 }
 
 function draw() {
 	onLine =
-		getDistance(lineCoords[0], lineCoords[1], bull.position.x, bull.position.y) +
-			getDistance(lineCoords[2], lineCoords[3], bull.position.x, bull.position.y) <=
+		getDistance(lineCoords[0], lineCoords[1], character.position.x, character.position.y) +
+			getDistance(lineCoords[2], lineCoords[3], character.position.x, character.position.y) <=
 		getDistance(lineCoords[0], lineCoords[1], lineCoords[2], lineCoords[3]) + 5;
 
 	distFromLine =
-		getDistance(lineCoords[0], lineCoords[1], bull.position.x, bull.position.y) +
-		getDistance(lineCoords[2], lineCoords[3], bull.position.x, bull.position.y);
+		getDistance(lineCoords[0], lineCoords[1], character.position.x, character.position.y) +
+		getDistance(lineCoords[2], lineCoords[3], character.position.x, character.position.y);
 
 	lineLength = getDistance(lineCoords[0], lineCoords[1], lineCoords[2], lineCoords[3]);
 
-	bull.shotClock -= 1;
-	bull.position.x = keyIsDown(LEFT_ARROW) ? bull.position.x : bull.position.x + 5;
+	character.shotClock -= 1;
+	character.position.x = keyIsDown(LEFT_ARROW) ? character.position.x : character.position.x + 5;
 
-	bull.position.x = keyIsDown(RIGHT_ARROW) ? bull.position.x : bull.position.x - 5;
+	character.position.x = keyIsDown(RIGHT_ARROW) ? character.position.x : character.position.x - 5;
 
-	if (bull.position.y < windowHeight - 50 && !onLine) {
-		bull.velocity.y += 0.5;
+	if (character.position.y < windowHeight - 50 && !onLine) {
+		character.velocity.y += 0.5;
 	} else {
-		if (!onLine) bull.position.y = windowHeight - 50;
+		if (!onLine) character.position.y = windowHeight - 50;
 
-		bull.velocity.y = 0;
+		character.velocity.y = 0;
 	}
 	if (keyIsDown(UP_ARROW)) {
-		if (inDoor(door[0], door[1], door[2], door[3], bull.position.x, bull.position.y)) {
-			window.location.href = '../gravity/html/gravity.html';
-		} else if (inDoor(tramp[0], tramp[1], tramp[2], tramp[3], bull.position.x, bull.position.y)) {
-			bull.velocity.y = -Math.abs(bull.velocity.y) - 2;
-		} else if (bull.position.y != windowHeight - 50 && !onLine) {
-			bull.velocity.y -= 0.2;
+		if (inDoor(door[0], door[1], door[2], door[3], character.position.x, character.position.y)) {
+			// window.location.href = '../gravity/html/gravity.html';
+			won = true;
+		}
+		if (inDoor(tramp[0], tramp[1], tramp[2], tramp[3], character.position.x, character.position.y)) {
+			character.velocity.y = -Math.abs(character.velocity.y) - 2;
+		} else if (character.position.y != windowHeight - 50 && !onLine) {
+			character.velocity.y -= 0.2;
 		} else {
-			bull.velocity.y = -15;
+			character.velocity.y = -15;
 		}
 	}
 
 	if (keyIsDown(DOWN_ARROW)) {
-		if (bull.velocity.y != 0) {
-			bull.velocity.y += 0.5;
+		if (character.velocity.y != 0) {
+			character.velocity.y += 0.5;
 		}
 	}
 
 	if (keyIsDown(65)) {
 		a = { x: -1, y: 0 };
-		if (bull.shotClock < 1) {
+		if (character.shotClock < 1) {
 			fire(a);
 		}
 	}
 	if (keyIsDown(87)) {
 		a = { x: -1, y: 0 };
-		if (bull.shotClock < 1) {
+		if (character.shotClock < 1) {
 			fire(a);
 		}
 	}
 	if (keyIsDown(83)) {
 		a = { x: 0, y: -1 };
-		if (bull.shotClock < 1) {
+		if (character.shotClock < 1) {
 			fire(a);
 		}
 	}
 	if (keyIsDown(68)) {
 		a = { x: 1, y: 0 };
-		if (bull.shotClock < 1) {
+		if (character.shotClock < 1) {
 			fire(a);
 		}
 	}
 
-	bull.charge = keyIsDown(32);
+	character.charge = keyIsDown(32);
 	background(255);
 	if (onLine && !keyIsDown(UP_ARROW)) {
-		bull.position.y = lineCoords[1];
+		character.position.y = lineCoords[1];
 	}
 
 	rect(door[0], door[1], door[2], door[3]);
 	rect(tramp[0], tramp[1], tramp[2], tramp[3]);
 
-	bull.position.y += bull.velocity.y;
-	renderCharacter(bull.position.x, bull.position.y);
+	character.position.y += character.velocity.y;
+	renderCharacter(character.position.x, character.position.y);
 	line(lineCoords[0], lineCoords[1], lineCoords[2], lineCoords[3]);
 	menu = keyIsDown(72);
+	if (!won) {
+		text('YOU LOSE!', windowWidth / 2 - 100, (windowHeight - 100) / 2);
+	} else {
+		text('YOU WIN!', windowWidth / 2 - 100, (windowHeight - 100) / 2);
+	}
 }
 
 function getDistance(xA, yA, xB, yB) {

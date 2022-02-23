@@ -1,4 +1,4 @@
-let Bull = function (x, y) {
+let Character = function (x, y) {
 	this.position = createVector(x, y);
 	this.velocity = createVector(0, 0);
 	this.mass = 0;
@@ -9,7 +9,7 @@ let Bull = function (x, y) {
 	this.charge = false;
 };
 
-Bull.prototype.fire = function (a) {
+Character.prototype.fire = function (a) {
 	if (this.ammo > 0) {
 		this.ammo--;
 		this.shotClock = 15;
@@ -24,4 +24,4 @@ Bull.prototype.fire = function (a) {
 	}
 };
 
-Bull.prototype.move = function () {};
+Character.prototype.move = function () {};
