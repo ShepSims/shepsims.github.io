@@ -114,6 +114,9 @@ function inDoor(dx1, dy1, dx2, dy2, px, py) {
 	return false;
 }
 function renderCharacter(posX, posY) {
+	if (posY < 0) {
+		line(posX, 10, posX, -posY / 10);
+	}
 	x = x + 1;
 	y = y + 1;
 	push();
