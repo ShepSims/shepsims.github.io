@@ -1,5 +1,15 @@
 // function preload() {
-// 	img = loadImage('assets/gradient.png');
+// 	var banner = new Image();
+// 	var loading = new Image();
+// 	var bannerElement = document.getElementById('banner'); // assumes an element with id "banner" contains the banner image - you can get the element however you want.
+// 	banner.src = './goose.gif';
+// 	loading.src = 'loading.gif';
+// 	banner.onload = function () {
+// 		bannerElement.removeChild(bannerElement.lastChild);
+// 		bannerElement.appendChild(banner);
+// 	};
+// 	bannerElement.removeChild(bannerElement.lastChild);
+// 	bannerElement.appendChild(loading);
 // }
 
 function setup() {
@@ -9,7 +19,8 @@ function setup() {
 	character = new Character(50, 50);
 	lineCoords = [25, windowHeight - 150, 150, windowHeight - 150];
 	rectMode(CORNERS);
-	door = [windowWidth - 150, windowHeight - 750, windowWidth - 75, windowHeight - 850];
+	door = [windowWidth - 130, windowHeight - 750, windowWidth - 75, windowHeight - 850];
+	doorknob = [windowWidth - 120, windowHeight - 800];
 	tramp = [350, windowHeight - 450, 600, windowHeight - 475];
 	angleMode(DEGREES);
 	angle = 0;
@@ -95,6 +106,7 @@ function draw() {
 	}
 
 	rect(door[0], door[1], door[2], door[3]);
+	circle(doorknob[0], doorknob[1], 5);
 	rect(tramp[0], tramp[1], tramp[2], tramp[3]);
 
 	character.position.y += character.velocity.y;
@@ -102,7 +114,7 @@ function draw() {
 	line(lineCoords[0], lineCoords[1], lineCoords[2], lineCoords[3]);
 	menu = keyIsDown(72);
 	if (!won) {
-		text('YOU LOSE!', windowWidth / 2 - 100, (windowHeight - 100) / 2);
+		text('Enter through the door to move on!', windowWidth / 2 - 100, (windowHeight - 100) / 2);
 	} else {
 		text('YOU WIN!', windowWidth / 2 - 100, (windowHeight - 100) / 2);
 	}
@@ -122,7 +134,8 @@ function inDoor(dx1, dy1, dx2, dy2, px, py) {
 
 	return false;
 }
-function renderCharacter(posX, posY) {
+
+function drawSpheres(posX, posY) {
 	if (posY < 0) {
 		line(posX, 10, posX, -posY / 10);
 	}
@@ -161,10 +174,13 @@ function renderCharacter(posX, posY) {
 	rotate(90);
 	rotate(-90);
 	translate(100, 0);
-
 	pop();
 
 	angle++;
+}
+
+function renderCharacter(posX, posY) {
+	drawSpheres(posX, posY);
 }
 
 function setCenter(a, b) {
