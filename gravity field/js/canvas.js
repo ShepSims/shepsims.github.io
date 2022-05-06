@@ -56,7 +56,7 @@ function draw() {
 			}
 		}
 	} else {
-		system.radius = 5000;
+		system.radius = 500;
 	}
 }
 
