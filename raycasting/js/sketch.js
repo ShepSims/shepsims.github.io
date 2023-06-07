@@ -23,10 +23,10 @@ function setup() {
 
 	particle = new Particle();
 
-	sprite = new Sprite();
+	// sprite = new Sprite();
 
-	sliderFOV = createSlider(0, 360, 45);
-	sliderFOV.input(changeFOV);
+	// sliderFOV = createSlider(0, 360, 45);
+	// sliderFOV.input(changeFOV);
 
 	spriteSliderFOV = createSlider(0, 360, 45);
 	spriteSliderFOV.input(changeSpriteFOV);
@@ -42,7 +42,7 @@ function changeFOV() {
 
 function changeSpriteFOV() {
 	const fov = spriteSliderFOV.value();
-	sprite.updateFOV(fov);
+	// sprite.updateFOV(fov);
 }
 
 function changeDensity() {
@@ -72,11 +72,11 @@ function draw() {
 		wall.show();
 	}
 	particle.show();
-	sprite.show();
+	// sprite.show();
 
 	// Make particle shine on walls and get array of distances
 	const scene = particle.look(walls);
-	sprite.look(walls);
+	// sprite.look(walls);
 
 	// Set width of rect so that display gets filled evenly
 	const w = sceneW / scene.length;

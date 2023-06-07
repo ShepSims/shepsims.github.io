@@ -1,0 +1,44 @@
+<!--
+Author : Atul Pandit
+Email : atul_pandit@yahoo.com / atul.pandit@gmail.com
+-->
+<!-- 
+DEMO LINK
+http://bl.ocks.org/atul-github/0019158da5d2f8499f7f
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Bouncing Balls in rectangle using D3js - by Atul</title>
+		<script src="https://d3js.org/d3.v3.min.js"></script>
+	</head>
+	<body>
+		<script src="../js/d3.js"></script>
+		<script src="../js/ball.js"></script>
+		<div id="mainDiv" style="width: 960px; height: 480px">
+			<div id="drawAreaOuter" style="width: 100%; height: 100%">
+				<div id="menuTop">
+					<a id="startStop" href="javascript:StartStopGame()">Start</a> | Speed :
+					<select id="speed" onchange="OnSpeedChange()">
+						<option value="1" selected="selected">Slow</option>
+						<option value="3">Medium</option>
+						<option value="5">Fast</option>
+					</select>
+					| Number of Balls :
+					<select id="numberOfBalls" onchange="OnNumberOfBallsChanged()">
+						<option value="5" selected="selected">6</option>
+						<option value="10">10</option>
+						<option value="15">15</option>
+						<option value="20">20</option>
+					</select>
+				</div>
+				<div id="drawArea" style="width: 100%; height: 100%; border: 1px solid gray"></div>
+			</div>
+		</div>
+
+		<script>
+			var svg = Initialize('drawArea');
+			StartStopGame();
+		</script>
+	</body>
+</html>

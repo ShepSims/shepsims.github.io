@@ -1,0 +1,10 @@
+When in an HTML file, simply typing a.nav-link then pressing enter will create a new component as so:
+
+                                <a href="" class="nav-link"></a>
+
+This is EXTREMLEY useful to know, as it can reduce the setup time of any type of file b about 1/3 in typing speed increases.  
+
+You heard that right.  1/3 of the typing time! Increase your developers productivity by 33% with one simple shortcut that is easy to use and remember.  BOOM! GO SHARE!
+
+
+

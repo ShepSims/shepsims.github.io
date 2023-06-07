@@ -1,0 +1,86 @@
+My Favorite Terminal Commands as a Software Engineer
+
+Mini header:
+
+As a mobile application software engineer, I have spent thousands of hours working on the macOS and in a Linux Terminal with Visual Studio Code. Over the past 12 years as a software developer and 5 years as a professional software engineer, I have developed a number of shortcuts and hotkeys that help me work more efficiently and save time and complexity that come with many common development tasks, allowing me to iterate quickly and effectively. In this article, I will share my top 10 favorites.
+
+
+
+Option 1:
+
+As a software engineer, it's important to be productive and effective in order to write high-quality code and solve complex problems. One way to achieve this is through the use of shortcuts and hotkeys. These tools can help to streamline your workflow, allowing you to navigate your codebase, debug your code, and manage your files more easily and quickly.
+
+One personality trait that often comes along with desiring increased productivity and effectiveness as an engineer is a desire for efficiency. Engineers who prioritize efficiency often look for ways to automate repetitive tasks or find more efficient ways of working. This can manifest in the use of shortcuts and hotkeys, as they allow for quick access to commonly used commands and functions.
+
+Another trait is attention to detail, Engineers with a strong attention to detail often notice small inefficiencies in their workflow, and are motivated to find ways to improve them. The use of shortcuts and hotkeys can help to streamline these small inefficiencies, allowing engineers to focus on the bigger picture.
+
+Additionally, a desire for organization and clarity is also common among engineers. Engineers who prioritize organization and clarity often look for ways to keep their work environment uncluttered and easy to navigate. The use of shortcuts and hotkeys can help to keep the workspace organized by allowing quick access to files, commands and functions.
+
+In summary, a desire for increased productivity and effectiveness as an engineer often comes hand in hand with a desire for efficiency, attention to detail, organization and clarity. The use of shortcuts and hotkeys can help engineers to achieve these goals by streamlining their workflow and allowing for quick access to commonly used commands and functions.
+
+Option 2: 
+
+The use of automation in the form of shortcuts and hotkeys can have a positive ripple effect throughout the life and career of a software engineer. By streamlining the workflow, engineers can save time and energy, which can be channeled into tackling more complex and challenging problems.
+
+One of the most notable ways that automation can increase productivity is by reducing the amount of time spent on repetitive tasks. For example, using a shortcut to quickly navigate between files or folders can save a significant amount of time compared to manually opening and closing windows. This can free up time for engineers to focus on more important tasks such as debugging and testing, which can result in more robust and reliable code.
+
+Automation can also help to improve the quality of the code produced by engineers. By making it easier to navigate the codebase, engineers can more quickly and easily identify and fix bugs. Additionally, by using shortcuts and hotkeys to automate repetitive tasks, engineers can reduce the chance of human error, which can lead to fewer bugs and more robust code.
+
+Another way that automation can increase productivity is by allowing engineers to work more efficiently across teams. Shortcuts and hotkeys can make it easier for engineers to collaborate on code by making it simpler for them to share and review work. This can result in faster development cycles and better quality code.
+
+Finally, automation can have a positive impact on the career of the software engineer. Engineers who are able to work more efficiently and effectively are often seen as more valuable to their employer, and are more likely to be offered promotions and higher-paying roles.
+
+In summary, the use of automation in the form of shortcuts and hotkeys can have a positive ripple effect throughout the life and career of a software engineer. By streamlining the workflow, engineers can save time and energy, which can be channeled into tackling more complex and challenging problems. Additionally, automation can help to improve the quality of the code produced by engineers, facilitate teamwork, and boost the career of the software engineer.
+
+
+
+Note^ Dont like that one as much, just snagging some concepts and tidbits from it and using it with some of Option 1...
+
+
+
+
+Ending paragraph after regenerating response:
+
+Finally, automation can have a positive impact on the career of the software engineer. Engineers who are able to work more efficiently and effectively are often seen as more valuable to their employer, and are more likely to be offered promotions and higher-paying roles.
+
+
+
+
+Generation for the article body:
+
+
+Mac Terminal: Command + T - This shortcut opens a new terminal tab, allowing you to easily switch between different projects or tasks without closing and reopening the terminal window.
+Mac Terminal: Command + Shift + [ - This shortcut allows you to navigate between open terminal tabs.
+VS Code: Command + Shift + P - This shortcut opens the command palette, which gives you quick access to a wide range of VS Code commands, including those for editing, debugging, and source control.
+VS Code: Command + P - This shortcut allows you to quickly search for and open files within your project.
+VS Code: Command + W - This shortcut closes the currently active editor tab.
+VS Code: Command + Shift + [ or ] - This shortcut allows you to navigate between open editor tabs.
+VS Code: Command + D - This shortcut allows you to quickly select the next occurrence of the selected word or phrase, making it easy to make multiple changes at once.
+VS Code: Command + K, Command + B - This shortcut allows you to toggle the sidebar on and off, making it easy to focus on your code without distractions.
+VS Code: Command + Shift + L - This shortcut allows you to quickly select all occurrences of a word or phrase, making it easy to make multiple changes at once.
+VS Code: Command + Shift + F - This shortcut allows you to search for a specific word or phrase across all files in your project, making it easy to find and fix bugs or make changes to your code.
+These are just a few of my favorite shortcuts and hotkeys that I have found to be particularly useful in the Mac Terminal and VS Code. I hope that you find them useful as well and that they help you to work more efficiently and effectively.
+
+
+Ask: 
+
+Give me some more useful Mac shortcuts to start a bare react native project and quickly go from no code to mvp
+Here are some Mac shortcuts that can help you quickly start a bare React Native project and go from no code to MVP:
+
+cmd + shift + n : This shortcut is used to create a new folder. You can use this to create a new folder for your React Native project.
+cmd + shift + 3 : This shortcut is used to take a screenshot. You can use this to take a screenshot of your new folder, so you can easily find it later.
+cmd + spacebar : This shortcut is used to open Spotlight. You can use this to open Spotlight and search for "Terminal" to open the Mac Terminal.
+cmd + n : This shortcut is used to open a new Terminal window. You can use this to open a new Terminal window, so you can run commands in parallel.
+cmd + t : This shortcut is used to open a new tab in the Terminal. You can use this to open a new tab in the Terminal and run commands in parallel.
+cmd + shift + [ or cmd + shift + ] : This shortcut is used to switch between tabs in the Terminal. You can use this to switch between tabs in the Terminal and run commands in parallel.
+cmd + shift + u : This shortcut is used to open the Utilities folder. You can use this to open the Utilities folder and search for "Node.js" to open Node.js.
+npx react-native init <project name> : This command is used to initialize a new React Native project. You can use this command in the Terminal to create a new React Native project.
+cd <project name> : This command is used to navigate to the project directory. You can use this command in the Terminal to navigate to the project directory and run other commands.
+npx react-native run-ios : This command is used to run the iOS version of your React Native project. You can use this command in the Terminal to run the iOS version of your React Native project.
+npx react-native run-android : This command is used to run the android version of your React Native project. You can use this command in the Terminal to run the android version of your React Native project.
+Keep in mind that React Native requires certain software and tools to be installed and configured, such as Xcode for iOS, and Android Studio for Android, you might need to install them before running the app.
+
+By using these shortcuts and commands, you can quickly start a bare React Native project and go from no code to MVP.
+
+Going to take a few of these... some aren't particularly interesting or useful... command + u exists? Why? Probably for some off brand engineers who work on these tools or use them regularly... wonder who they are and what their specialites are... I bet their specialization causes their rates to be astronomical at high levels... just as it is with any role really if they can become a master in and industry that can derive value from highly skilled workers... As long as you can earn someone what you are paid, then they will pay you whatever amount it is that you ask of them.  Interesting concept.  And on we go.  These notes that I plan to throw into some of these blog articles are meant to represent that odd quality in life in that you're never sure quite what direction ou are supposed to be going in. Maybe this chapter of your life was only meant to exist to put you in a different position later on, or at least certainly caused your life to move in the direction that you have moved.  But the only direction that matters today in connecting you to where you are going tomorrow is that which you are currently on at any given moment.  Are you working to move yourself forward, laterally, or backward? How do you know? Do you make a conscious effort every moment of every day to be on a path that you believe with all of your heart will leave you in a better spot in the future than you are currently?  Again... just some thoughts.  Lets move back into our conversation with Artificial Intelligence that can be used to create human intelligence.  Yikes! 
+

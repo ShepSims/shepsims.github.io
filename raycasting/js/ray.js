@@ -56,13 +56,13 @@ class Ray {
 		// or
 		//  (Px, Py) = (x3 + u*(x4-x3), y3+u(y4-y3))
 
+		const pointOfIntersection = createVector();
+		pointOfIntersection.x = x1 + t * (x2 - x1);
+		pointOfIntersection.y = y1 + t * (y2 - y1);
+		return pointOfIntersection;
 		if (t > 0 && t < 1 && u > 0) {
-			const pointOfIntersection = createVector();
-			console.log(pointOfIntersection);
-			pointOfIntersection.x = x1 + t * (x2 - x1);
-			pointOfIntersection.y = y1 + t * (y2 - y1);
-			return pointOfIntersection;
 		} else {
+			// console.log('hi');
 			return false;
 		}
 	}

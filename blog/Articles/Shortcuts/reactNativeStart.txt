@@ -1,0 +1,8 @@
+
+Note: you need to have react-native-cli installed and configured on your system, it is a command line interface for React Native and it allows you to run React Native commands and make sure that you have Xcode or Android Studio installed, depending on the platform you want to run the project on.
+
+1. Open terminal on your Mac
+2. Run the command npx react-native init [project_name] to create a new React Native project. Replace [project_name] with the desired name for your project.
+3. Once the project is created, navigate to the project directory by running the command cd [project_name].
+4. Run the command code . to open the project in VS Code.
+5. Run the command npx react-native run-ios to run the project on an iOS simulator or npx react-native run-android for Android (can be physical device or simulator run in AndroidStudio).

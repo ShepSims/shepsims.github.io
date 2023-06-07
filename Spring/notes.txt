@@ -1,0 +1,4 @@
+Force of Spring = -k*x 
+k = spring constant
+x = displacement (from rest)
+
