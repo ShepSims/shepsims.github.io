@@ -15,7 +15,7 @@
 	--bs-indigo: #6610f2;
 	--bs-purple: #6f42c1;
 	--bs-pink: #d63384;
-	--bs-red: #dc3545;
+	--bs-red: rgba(220, 220, 200, 0.1);;
 	--bs-orange: #f4623a;
 	--bs-yellow: #ffc107;
 	--bs-green: #198754;
@@ -29,7 +29,7 @@
 	--bs-success: #198754;
 	--bs-info: #0dcaf0;
 	--bs-warning: #ffc107;
-	--bs-danger: #dc3545;
+	--bs-danger: rgba(220, 220, 200, 0.1);;
 	--bs-light: #f8f9fa;
 	--bs-dark: #212529;
 	--bs-font-sans-serif: 'Merriweather Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
@@ -2889,7 +2889,7 @@ textarea.form-control.is-valid {
 	width: 100%;
 	margin-top: 0.25rem;
 	font-size: 0.875em;
-	color: #dc3545;
+	color: rgba(220, 220, 200, 0.1);
 }
 
 .invalid-tooltip {
@@ -2902,7 +2902,7 @@ textarea.form-control.is-valid {
 	margin-top: 0.1rem;
 	font-size: 0.875rem;
 	color: #fff;
-	background-color: rgba(220, 53, 69, 0.9);
+	background-color: rgba(220, 220, 200, 0.1);
 	border-radius: 0.25rem;
 }
 
@@ -2915,7 +2915,7 @@ textarea.form-control.is-valid {
 
 .was-validated .form-control:invalid,
 .form-control.is-invalid {
-	border-color: #dc3545;
+	border-color: rgba(220, 220, 200, 0.1);;
 	padding-right: calc(1.5em + 0.75rem);
 	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
 	background-repeat: no-repeat;
@@ -2924,7 +2924,7 @@ textarea.form-control.is-valid {
 }
 .was-validated .form-control:invalid:focus,
 .form-control.is-invalid:focus {
-	border-color: #dc3545;
+	border-color: rgba(220, 220, 200, 0.1);;
 	box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
 }
 
@@ -2936,7 +2936,7 @@ textarea.form-control.is-invalid {
 
 .was-validated .form-select:invalid,
 .form-select.is-invalid {
-	border-color: #dc3545;
+	border-color: rgba(220, 220, 200, 0.1);;
 }
 .was-validated .form-select:invalid:not([multiple]):not([size]),
 .was-validated .form-select:invalid:not([multiple])[size='1'],
@@ -2950,17 +2950,17 @@ textarea.form-control.is-invalid {
 }
 .was-validated .form-select:invalid:focus,
 .form-select.is-invalid:focus {
-	border-color: #dc3545;
+	border-color: rgba(220, 220, 200, 0.1);;
 	box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
 }
 
 .was-validated .form-check-input:invalid,
 .form-check-input.is-invalid {
-	border-color: #dc3545;
+	border-color: rgba(220, 220, 200, 0.1);;
 }
 .was-validated .form-check-input:invalid:checked,
 .form-check-input.is-invalid:checked {
-	background-color: #dc3545;
+	background-color: rgba(220, 220, 200, 0.1);;
 }
 .was-validated .form-check-input:invalid:focus,
 .form-check-input.is-invalid:focus {
@@ -2968,7 +2968,7 @@ textarea.form-control.is-invalid {
 }
 .was-validated .form-check-input:invalid ~ .form-check-label,
 .form-check-input.is-invalid ~ .form-check-label {
-	color: #dc3545;
+	color: rgba(220, 220, 200, 0.1);;
 }
 
 .form-check-inline .form-check-input ~ .invalid-feedback {
@@ -3231,8 +3231,8 @@ fieldset:disabled .btn {
 
 .btn-danger {
 	color: #fff;
-	background-color: #dc3545;
-	border-color: #dc3545;
+	background-color: rgba(220, 220, 200, 0.1);;
+	border-color: rgba(220, 220, 200, 0.1);;
 }
 .btn-danger:hover {
 	color: #fff;
@@ -3265,8 +3265,8 @@ fieldset:disabled .btn {
 .btn-danger:disabled,
 .btn-danger.disabled {
 	color: #fff;
-	background-color: #dc3545;
-	border-color: #dc3545;
+	background-color: rgba(220, 220, 200, 0.1);;
+	border-color: rgba(220, 220, 200, 0.1);;
 }
 
 .btn-light {
@@ -3525,13 +3525,13 @@ fieldset:disabled .btn {
 }
 
 .btn-outline-danger {
-	color: #dc3545;
-	border-color: #dc3545;
+	color: rgba(220, 220, 200, 0.1);;
+	border-color: rgba(220, 220, 200, 0.1);;
 }
 .btn-outline-danger:hover {
 	color: #fff;
-	background-color: #dc3545;
-	border-color: #dc3545;
+	background-color: rgba(220, 220, 200, 0.1);;
+	border-color: rgba(220, 220, 200, 0.1);;
 }
 .btn-check:focus + .btn-outline-danger,
 .btn-outline-danger:focus {
@@ -3543,8 +3543,8 @@ fieldset:disabled .btn {
 .btn-outline-danger.active,
 .btn-outline-danger.dropdown-toggle.show {
 	color: #fff;
-	background-color: #dc3545;
-	border-color: #dc3545;
+	background-color: rgba(220, 220, 200, 0.1);;
+	border-color: rgba(220, 220, 200, 0.1);;
 }
 .btn-check:checked + .btn-outline-danger:focus,
 .btn-check:active + .btn-outline-danger:focus,
@@ -3555,7 +3555,7 @@ fieldset:disabled .btn {
 }
 .btn-outline-danger:disabled,
 .btn-outline-danger.disabled {
-	color: #dc3545;
+	color: rgba(220, 220, 200, 0.1);;
 	background-color: transparent;
 }
 
@@ -6454,7 +6454,7 @@ fieldset:disabled .btn {
 }
 
 .link-danger {
-	color: #dc3545;
+	color: rgba(220, 220, 200, 0.1);;
 }
 .link-danger:hover,
 .link-danger:focus {
@@ -6868,7 +6868,7 @@ fieldset:disabled .btn {
 }
 
 .border-danger {
-	border-color: #dc3545 !important;
+	border-color: rgba(220, 220, 200, 0.1); !important;
 }
 
 .border-light {
@@ -7697,7 +7697,7 @@ fieldset:disabled .btn {
 }
 
 .text-danger {
-	color: #dc3545 !important;
+	color: rgba(220, 220, 200, 0.1); !important;
 }
 
 .text-light {
@@ -7733,7 +7733,7 @@ fieldset:disabled .btn {
 }
 
 .bg-primary {
-	background-color: #f4623a !important;
+	background-color: #0022ee !important;
 }
 
 .bg-secondary {
@@ -7753,7 +7753,7 @@ fieldset:disabled .btn {
 }
 
 .bg-danger {
-	background-color: #dc3545 !important;
+	background-color: rgba(220, 220, 200, 0.1); !important;
 }
 
 .bg-light {
@@ -11192,7 +11192,7 @@ body {
 }
 
 .text-white-75 {
-	color: rgba(255, 255, 255, 0.75) !important;
+	color: rgba(255, 255, 255, 1) !important;
 }
 
 .btn-xl {
@@ -11284,7 +11284,7 @@ hr.divider-light {
 header.masthead {
 	padding-top: 10rem;
 	padding-bottom: calc(10rem - 4.5rem);
-	background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url('../gravity/src/drawing1.jpg');
+	background: linear-gradient(to bottom, rgba(92, 77, 66, 0.25) 0%, rgba(92, 77, 66, 0.25) 100%), url('../gravity/src/drawing1.jpg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-attachment: scroll;
@@ -11350,7 +11350,7 @@ header.masthead .h1 {
 	text-align: center;
 	opacity: 0;
 	color: #fff;
-	background: rgba(244, 98, 58, 0.9);
+	background: rgba(0, 0, 0, 0.6);
 	transition: opacity 0.25s ease;
 	text-align: center;
 }
