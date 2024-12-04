@@ -150,6 +150,20 @@ function update() {
 	}
 }
 
+// Collect Coin Function
+function collectCoin() {
+	score++;
+	if (score > highScore) {
+		highScore = score;
+		// highValue calculation if needed
+	}
+
+	// Optionally increase player ammo or other stats
+	if (score % 10 === 0) {
+		player.ammo++;
+	}
+}
+
 // Draw Function
 function draw() {
 	// Draw Player

@@ -9,8 +9,9 @@ class Room {
 		this.mobs = [];
 		this.powerUps = [];
 		this.walls = [];
+		this.coins = []; // Added coins array
 
-		// Populate room with mobs and power-ups
+		// Populate room with mobs, power-ups, and coins
 		this.populate();
 	}
 
@@ -25,6 +26,42 @@ class Room {
 		// Add power-ups
 		let powerUp = new PowerUp(this.x + 300, this.y + 300, 'bouncyLasers');
 		this.powerUps.push(powerUp);
+
+		// Add coins
+		this.spawnCoin();
+	}
+
+	spawnCoin() {
+		// Create a new coin at a random position within the room
+		let coinX = randomRange(this.x + 50, this.x + this.width - 50);
+		let coinY = randomRange(this.y + 50, this.y + this.height - 50);
+
+		// Pass the onCollect function to the coin
+		let coin = new Coin(coinX, coinY, () => {
+			this.handleCoinCollect();
+		});
+
+		this.coins.push(coin);
+	}
+
+	handleCoinCollect() {
+		// Increase score
+		collectCoin(); // Assuming collectCoin() is defined globally in game.js
+
+		// Remove the collected coin
+		this.coins.pop(); // Assuming only one coin at a time
+
+		// Spawn a new coin
+		this.spawnCoin();
+
+		// Spawn a new enemy (bear or matador)
+		let newEnemy;
+		if (Math.random() < 0.5) {
+			newEnemy = new Bear(randomRange(this.x + 50, this.x + this.width - 50), randomRange(this.y + 50, this.y + this.height - 50));
+		} else {
+			newEnemy = new Matador(randomRange(this.x + 50, this.x + this.width - 50), randomRange(this.y + 50, this.y + this.height - 50));
+		}
+		this.mobs.push(newEnemy);
 	}
 
 	update() {
@@ -39,6 +76,18 @@ class Room {
 				player.hp--;
 				this.mobs.splice(i, 1);
 			}
+
+			// Check collision with player's lasers
+			for (let j = player.lasers.length - 1; j >= 0; j--) {
+				let laser = player.lasers[j];
+				let distToLaser = Math.hypot(laser.x - mob.x, laser.y - mob.y);
+				if (distToLaser < mob.r + 12.5) {
+					// Remove mob and laser
+					this.mobs.splice(i, 1);
+					player.lasers.splice(j, 1);
+					break;
+				}
+			}
 		}
 
 		// Update power-ups
@@ -50,6 +99,21 @@ class Room {
 					powerUp.applyEffect(player);
 					this.powerUps.splice(i, 1);
 				}
+			}
+		}
+
+		// Update coins
+		for (let i = this.coins.length - 1; i >= 0; i--) {
+			let coin = this.coins[i];
+			coin.update();
+
+			// Check collision with player
+			let dist = Math.hypot(player.x - coin.x, player.y - coin.y);
+			if (dist < player.r + coin.r) {
+				// Collect coin
+				coin.collect(); // Call the collect method
+				// Since coin collects handle removing and spawning, no need to splice here
+				break;
 			}
 		}
 
@@ -76,11 +140,14 @@ class Room {
 		// Draw walls
 		this.walls.forEach((wall) => wall.draw(context));
 
-		// Draw mobs
-		this.mobs.forEach((mob) => mob.draw(context));
+		// Draw coins
+		this.coins.forEach((coin) => coin.draw(context));
 
 		// Draw power-ups
 		this.powerUps.forEach((powerUp) => powerUp.draw(context));
+
+		// Draw mobs
+		this.mobs.forEach((mob) => mob.draw(context));
 
 		// Draw enemy projectiles
 		enemyProjectiles.forEach((projectile) => projectile.draw(context));
