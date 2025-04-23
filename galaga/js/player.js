@@ -18,6 +18,7 @@ class Player {
 		this.bounce = false;
 		this.doubleShot = false;
 		this.fork = false;
+		this.devMode = false;
 	}
 
 	reset(x, y) {
@@ -59,17 +60,17 @@ class Player {
 	}
 
 	move() {
-		if (this.moveLeft) {
-			this.x -= 5;
-		}
-		if (this.moveRight) {
-			this.x += 5;
-		}
-		if (this.moveUp) {
-			this.y += 5;
-		}
-		if (this.moveDown) {
-			this.y -= 5;
+		if (this.devMode) {
+			const speed = this.charge ? 15 : 10;
+			if (this.moveLeft) this.x -= speed;
+			if (this.moveRight) this.x += speed;
+			if (this.moveUp) this.y -= speed;
+			if (this.moveDown) this.y += speed;
+		} else {
+			if (this.moveLeft) this.x -= 5;
+			if (this.moveRight) this.x += 5;
+			if (this.moveUp) this.y += 5;
+			if (this.moveDown) this.y -= 5;
 		}
 
 		// Handle screen edges
@@ -112,6 +113,20 @@ class Player {
 
 		// Draw Lasers
 		this.lasers.forEach((laser) => laser.draw(context));
+	}
+
+	toggleDevMode() {
+		this.devMode = !this.devMode;
+		if (this.devMode) {
+			this.hp = 999;
+			this.ammo = 999;
+			this.boost = 999;
+			this.bounce = true;
+			this.doubleShot = true;
+			this.fork = true;
+		} else {
+			this.reset(this.x, this.y);
+		}
 	}
 }
 

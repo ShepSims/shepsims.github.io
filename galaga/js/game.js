@@ -48,36 +48,36 @@ function keyDown(ev) {
 		case 32: // Spacebar
 			player.charge = true;
 			break;
-		case 37: // Left Arrow
+		case 65: // A - Left
 			player.moveLeft = true;
 			break;
-		case 38: // Up Arrow
-			player.moveDown = true;
-			break;
-		case 39: // Right Arrow
-			player.moveRight = true;
-			break;
-		case 40: // Down Arrow
+		case 83: // W - Up
 			player.moveUp = true;
 			break;
-		case 65: // A
+		case 68: // D - Right
+			player.moveRight = true;
+			break;
+		case 87: // S - Down
+			player.moveDown = true;
+			break;
+		case 37: // Left Arrow
 			if (player.shotClock <= 0) {
 				player.fire({ x: -1, y: 0 });
 			}
 			break;
-		case 87: // W
+		case 38: // Up Arrow
 			if (player.shotClock <= 0) {
 				player.fire({ x: 0, y: 1 });
 			}
 			break;
-		case 83: // S
-			if (player.shotClock <= 0) {
-				player.fire({ x: 0, y: -1 });
-			}
-			break;
-		case 68: // D
+		case 39: // Right Arrow
 			if (player.shotClock <= 0) {
 				player.fire({ x: 1, y: 0 });
+			}
+			break;
+		case 40: // Down Arrow
+			if (player.shotClock <= 0) {
+				player.fire({ x: 0, y: -1 });
 			}
 			break;
 		case 72: // H
@@ -85,6 +85,9 @@ function keyDown(ev) {
 			break;
 		case 8: // Backspace
 			window.location.href = 'https://shep.blog';
+			break;
+		case 192: // Backtick (`) - Dev Mode Toggle
+			player.toggleDevMode();
 			break;
 	}
 }
@@ -94,17 +97,21 @@ function keyUp(ev) {
 		case 32: // Spacebar
 			player.charge = false;
 			break;
-		case 37: // Left Arrow
+		case 65: // A - Left
 			player.moveLeft = false;
 			break;
-		case 38: // Up Arrow
-			player.moveDown = false;
+		case 83: // W - Up
+			player.moveUp = false;
 			break;
-		case 39: // Right Arrow
+		case 68: // D - Right
 			player.moveRight = false;
 			break;
-		case 40: // Down Arrow
-			player.moveUp = false;
+		case I can still go through the walls, and so can projectiles .  This is a good approximation for a "ghost" powerup (lets player pass throgh walls) and penetrating bullets (lets shots pass through walls), but not how Iwant it to work by default.   
+
+Can you add both of those as possible powerups for the player or an enemy 
+
+we will need to incorprate "bosses" at some point, so lets scope out that concept for every 10 points or socan : // S - Down
+			player.moveDown = false;
 			break;
 		case 72: // H
 			menu = false;
@@ -183,6 +190,13 @@ function draw() {
 	context.fillText('HP: ' + player.hp, 20, 55);
 	context.fillText('Ammo: ' + player.ammo, 20, 80);
 	context.fillText('Charge: ' + player.boost, 20, 105);
+	
+	// Display Dev Mode Status
+	if (player.devMode) {
+		context.fillStyle = 'red';
+		context.font = 'bold 20px sans-serif';
+		context.fillText('DEV MODE ACTIVE', canvas.width - 200, 20);
+	}
 }
 
 // Reset Game Function

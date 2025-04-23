@@ -1,0 +1,13 @@
+schemaname,tablename,policyname,permissive,roles,cmd,qual,with_check
+public,instruments,Anyone can read instruments,PERMISSIVE,{public},SELECT,true,null
+public,instruments,Users can delete their own instruments,PERMISSIVE,{public},DELETE,(auth.uid() = user_id),null
+public,instruments,Users can insert their own instruments,PERMISSIVE,{public},INSERT,null,((auth.uid() = user_id) OR (user_id IS NULL))
+public,instruments,Users can update their own instruments,PERMISSIVE,{public},UPDATE,(auth.uid() = user_id),null
+public,songs,Users can delete their own songs,PERMISSIVE,{public},DELETE,(auth.uid() = user_id),null
+public,songs,Users can insert their own songs,PERMISSIVE,{public},INSERT,null,(auth.uid() = user_id)
+public,songs,Users can only read their own songs,PERMISSIVE,{public},SELECT,(auth.uid() = user_id),null
+public,songs,Users can update their own songs,PERMISSIVE,{public},UPDATE,(auth.uid() = user_id),null
+public,user_profiles,Anyone can read user profiles,PERMISSIVE,{public},SELECT,true,null
+public,user_profiles,Users can delete their own profile,PERMISSIVE,{public},DELETE,(auth.uid() = user_id),null
+public,user_profiles,Users can insert their own profile,PERMISSIVE,{public},INSERT,null,(auth.uid() = user_id)
+public,user_profiles,Users can update their own profile,PERMISSIVE,{public},UPDATE,(auth.uid() = user_id),null

@@ -1,0 +1,20 @@
+table_name,column_name,data_type,is_nullable,column_default
+instruments,id,uuid,NO,uuid_generate_v4()
+instruments,user_id,uuid,NO,null
+instruments,name,text,NO,null
+instruments,type,text,NO,null
+instruments,description,text,YES,null
+instruments,created_at,timestamp with time zone,NO,"timezone('utc'::text, now())"
+instruments,updated_at,timestamp with time zone,NO,"timezone('utc'::text, now())"
+songs,id,uuid,NO,uuid_generate_v4()
+songs,user_id,uuid,NO,null
+songs,title,text,NO,null
+songs,data,jsonb,NO,null
+songs,created_at,timestamp with time zone,NO,"timezone('utc'::text, now())"
+songs,updated_at,timestamp with time zone,NO,"timezone('utc'::text, now())"
+user_profiles,id,uuid,NO,uuid_generate_v4()
+user_profiles,user_id,uuid,NO,null
+user_profiles,username,text,YES,null
+user_profiles,email,text,YES,null
+user_profiles,created_at,timestamp with time zone,NO,"timezone('utc'::text, now())"
+user_profiles,updated_at,timestamp with time zone,NO,"timezone('utc'::text, now())"

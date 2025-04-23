@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Song Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="profile.css">
+    <!-- Add Supabase -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="config.js"></script>
+</head>
+<body>
+    <!-- Add header -->
+    <header class="app-header">
+        <div class="header-left">
+            <button onclick="window.location.href='index.html'" class="back-button">
+                <span>←</span> Back
+            </button>
+            <h1>Song Builder</h1>
+        </div>
+        <div class="header-right">
+            <!-- Auth button will be inserted here by AuthController -->
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="profile-container">
+            <h1>User Profile</h1>
+            <div class="profile-info">
+                <div class="profile-section">
+                    <h2>Account Information</h2>
+                    <div class="info-item">
+                        <label>Username:</label>
+                        <span id="profile-username">Loading...</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Email:</label>
+                        <span id="profile-email">Loading...</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Account Created:</label>
+                        <span id="profile-created">Loading...</span>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h2>Statistics</h2>
+                    <div class="info-item">
+                        <label>Total Songs Created:</label>
+                        <span id="profile-songs-count">Loading...</span>
+                    </div>
+                    <div class="info-item">
+                        <label>Total Instruments Created:</label>
+                        <span id="profile-instruments-count">Loading...</span>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <button id="edit-profile" class="btn">Edit Profile</button>
+                    <button id="change-password" class="btn">Change Password</button>
+                    <button id="logout" class="btn btn-danger">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="supabaseClient.js"></script>
+    <script src="auth.js"></script>
+    <script src="profile.js"></script>
+</body>
+</html> 

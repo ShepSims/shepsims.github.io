@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Deck | Song Builder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header with Title and Tabs -->
+        <header class="app-header">
+            <h1>DJ Deck</h1>
+            <div class="tab-navigation">
+                <button class="tab-button active" data-tab="drums">Drum Machine</button>
+                <button class="tab-button" data-tab="instruments">Instruments</button>
+                <button class="tab-button" data-tab="synth">Synthesizer</button>
+                <button class="tab-button" data-tab="recording">Recording Studio</button>
+                <button class="tab-button" data-tab="wobble">Wobbly Instrument</button>
+                <button class="tab-button" data-tab="visualize">Visualize</button>
+            </div>
+        </header>
+        
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Transport Controls Bar -->
+            <div class="transport-bar">
+                <div class="tempo-control">
+                    <button id="tempoDown">-</button>
+                    <div class="tempo-display"><span id="tempoValue">120</span> BPM</div>
+                    <button id="tempoUp">+</button>
+                    <input type="range" id="tempo" min="40" max="240" value="120">
+                </div>
+                
+                <div class="main-controls">
+                    <button id="playBtn" class="primary-btn">Play</button>
+                    <button id="stopBtn">Stop</button>
+                    <button id="clearBtn" class="danger-btn">Clear All</button>
+                    <button id="randomizeBtn" class="secondary-btn">Randomize</button>
+                </div>
+                
+                <div class="sound-storage">
+                    <div class="storage-controls">
+                        <button id="saveSound">Save</button>
+                        <select id="soundSelect"></select>
+                        <button id="loadSound">Load</button>
+                        <button id="deleteSound" class="danger-btn">Delete</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab Content Container -->
+            <div class="tab-content">
+                <!-- Drum Machine Tab -->
+                <div class="tab-pane active" id="drums-tab">
+                    <div class="beat-section">
+                        <h3>Drum Machine</h3>
+                        
+                        <div class="control-panel">
+                            <div class="control-group">
+                                <h4>Kick</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="kickFreqKnob"></div>
+                                    <div class="knob-label">Frequency</div>
+                                </div>
+                                <input type="range" id="kickFreq" min="20" max="200" value="100">
+                                <div class="knob-container">
+                                    <div class="knob" id="kickDecayKnob"></div>
+                                    <div class="knob-label">Decay</div>
+                                </div>
+                                <input type="range" id="kickDecay" min="0.1" max="1" step="0.1" value="0.5">
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Snare</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="snareNoiseKnob"></div>
+                                    <div class="knob-label">Noise</div>
+                                </div>
+                                <input type="range" id="snareNoise" min="0" max="1" step="0.1" value="0.5">
+                                <div class="knob-container">
+                                    <div class="knob" id="snareDecayKnob"></div>
+                                    <div class="knob-label">Decay</div>
+                                </div>
+                                <input type="range" id="snareDecay" min="0.1" max="1" step="0.1" value="0.3">
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Hi-Hat</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="hihatFreqKnob"></div>
+                                    <div class="knob-label">Frequency</div>
+                                </div>
+                                <input type="range" id="hihatFreq" min="1000" max="10000" step="100" value="5000">
+                                <div class="knob-container">
+                                    <div class="knob" id="hihatDecayKnob"></div>
+                                    <div class="knob-label">Decay</div>
+                                </div>
+                                <input type="range" id="hihatDecay" min="0.05" max="0.5" step="0.05" value="0.1">
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Clap</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="clapDelayKnob"></div>
+                                    <div class="knob-label">Delay</div>
+                                </div>
+                                <input type="range" id="clapDelay" min="0" max="0.1" step="0.01" value="0.03">
+                                <div class="knob-container">
+                                    <div class="knob" id="clapDecayKnob"></div>
+                                    <div class="knob-label">Decay</div>
+                                </div>
+                                <input type="range" id="clapDecay" min="0.1" max="1" step="0.1" value="0.3">
+                            </div>
+                            
+                            <!-- Modern instruments -->
+                            <div class="control-group modern-instrument">
+                                <h4>808 Bass</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="bass808FreqKnob"></div>
+                                    <div class="knob-label">Frequency</div>
+                                </div>
+                                <input type="range" id="bass808Freq" min="40" max="120" value="60">
+                                <div class="knob-container">
+                                    <div class="knob" id="bass808DistortionKnob"></div>
+                                    <div class="knob-label">Distortion</div>
+                                </div>
+                                <input type="range" id="bass808Distortion" min="1" max="10" step="0.5" value="4">
+                            </div>
+                            
+                            <div class="control-group modern-instrument">
+                                <h4>Trap Hi-Hat</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="trapHihatFreqKnob"></div>
+                                    <div class="knob-label">Frequency</div>
+                                </div>
+                                <input type="range" id="trapHihatFreq" min="6000" max="12000" step="100" value="8000">
+                                <div class="knob-container">
+                                    <div class="knob" id="trapHihatRollSpeedKnob"></div>
+                                    <div class="knob-label">Roll Speed</div>
+                                </div>
+                                <input type="range" id="trapHihatRollSpeed" min="2" max="8" step="1" value="4">
+                                <label class="toggle-container">
+                                    <input type="checkbox" id="trapHihatRoll">
+                                    <span class="toggle-label">Roll Mode</span>
+                                </label>
+                            </div>
+                            
+                            <div class="control-group modern-instrument">
+                                <h4>Vocal Chop</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="vocalChopReverbKnob"></div>
+                                    <div class="knob-label">Reverb</div>
+                                </div>
+                                <input type="range" id="vocalChopReverb" min="0" max="0.8" step="0.05" value="0.3">
+                                <select id="vocalChopType">
+                                    <option value="1">Ah</option>
+                                    <option value="2">Eh</option>
+                                    <option value="3">Oh</option>
+                                    <option value="4">Ih</option>
+                                    <option value="5">Uh</option>
+                                </select>
+                                <select id="vocalChopNote">
+                                    <option value="C4">C4</option>
+                                    <option value="D4">D4</option>
+                                    <option value="E4">E4</option>
+                                    <option value="F4">F4</option>
+                                    <option value="G4">G4</option>
+                                    <option value="A4">A4</option>
+                                    <option value="B4">B4</option>
+                                    <option value="C5">C5</option>
+                                </select>
+                            </div>
+                            
+                            <div class="control-group modern-instrument">
+                                <h4>Future Bass</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="futureBassLFORateKnob"></div>
+                                    <div class="knob-label">LFO Rate</div>
+                                </div>
+                                <input type="range" id="futureBassLFORate" min="1" max="20" step="0.5" value="6">
+                                <div class="knob-container">
+                                    <div class="knob" id="futureBassLFODepthKnob"></div>
+                                    <div class="knob-label">LFO Depth</div>
+                                </div>
+                                <input type="range" id="futureBassLFODepth" min="1" max="50" step="1" value="20">
+                                <select id="futureBassNote">
+                                    <option value="C4">C4</option>
+                                    <option value="D4">D4</option>
+                                    <option value="E4">E4</option>
+                                    <option value="F4">F4</option>
+                                    <option value="G4">G4</option>
+                                    <option value="A4">A4</option>
+                                    <option value="B4">B4</option>
+                                </select>
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Rimshot</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="rimshotFreqKnob"></div>
+                                    <div class="knob-label">Frequency</div>
+                                </div>
+                                <input type="range" id="rimshotFreq" min="200" max="800" step="10" value="400">
+                                <div class="knob-container">
+                                    <div class="knob" id="rimshotDecayKnob"></div>
+                                    <div class="knob-label">Decay</div>
+                                </div>
+                                <input type="range" id="rimshotDecay" min="0.1" max="0.5" step="0.05" value="0.2">
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Tom</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="tomFreqKnob"></div>
+                                    <div class="knob-label">Frequency</div>
+                                </div>
+                                <input type="range" id="tomFreq" min="50" max="300" step="5" value="150">
+                                <div class="knob-container">
+                                    <div class="knob" id="tomDecayKnob"></div>
+                                    <div class="knob-label">Decay</div>
+                                </div>
+                                <input type="range" id="tomDecay" min="0.1" max="1" step="0.05" value="0.4">
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Cymbal</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="cymbalFreqKnob"></div>
+                                    <div class="knob-label">Frequency</div>
+                                </div>
+                                <input type="range" id="cymbalFreq" min="5000" max="12000" step="100" value="8000">
+                                <div class="knob-container">
+                                    <div class="knob" id="cymbalDecayKnob"></div>
+                                    <div class="knob-label">Decay</div>
+                                </div>
+                                <input type="range" id="cymbalDecay" min="0.1" max="1" step="0.05" value="0.7">
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Cowbell</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="cowbellFreqKnob"></div>
+                                    <div class="knob-label">Frequency</div>
+                                </div>
+                                <input type="range" id="cowbellFreq" min="500" max="1500" step="50" value="800">
+                                <div class="knob-container">
+                                    <div class="knob" id="cowbellDecayKnob"></div>
+                                    <div class="knob-label">Decay</div>
+                                </div>
+                                <input type="range" id="cowbellDecay" min="0.1" max="0.5" step="0.05" value="0.3">
+                            </div>
+                        </div>
+                        
+                        <div class="beat-grid"></div>
+                    </div>
+                </div>
+                
+                <!-- Instruments Tab -->
+                <div class="tab-pane" id="instruments-tab">
+                    <div class="instruments-section">
+                        <h3>Instruments</h3>
+                        
+                        <div class="instrument-selector">
+                            <select id="instrumentType">
+                                <option value="guitar">Guitar</option>
+                                <option value="bass">Bass</option>
+                                <option value="synth">Synth</option>
+                                <option value="pad">Pad</option>
+                                <option value="pluck">Pluck</option>
+                                <option value="futureBass">Future Bass</option>
+                                <option value="vocalChop">Vocal Chop</option>
+                            </select>
+                        </div>
+
+                        <div class="instrument-controls">
+                            <!-- Guitar Controls -->
+                            <div class="control-group instrument-panel" data-instrument="guitar">
+                                <h4>Guitar</h4>
+                                <div class="guitar-type-selector">
+                                    <label for="guitarType">Guitar Type:</label>
+                                    <select id="guitarType" class="guitar-type-select">
+                                        <option value="acoustic">Acoustic Guitar</option>
+                                        <option value="electric">Electric Guitar</option>
+                                    </select>
+                                </div>
+                                <div class="knob-container">
+                                    <div class="knob" id="guitarDistortionKnob"></div>
+                                    <div class="knob-label">Distortion</div>
+                                </div>
+                                <input type="range" id="guitarDistortion" min="0" max="10" step="0.1" value="2">
+                                <div class="knob-container">
+                                    <div class="knob" id="guitarReverbKnob"></div>
+                                    <div class="knob-label">Reverb</div>
+                                </div>
+                                <input type="range" id="guitarReverb" min="0" max="1" step="0.1" value="0.3">
+                                <div class="knob-container">
+                                    <div class="knob" id="guitarDelayKnob"></div>
+                                    <div class="knob-label">Delay</div>
+                                </div>
+                                <input type="range" id="guitarDelay" min="0" max="0.5" step="0.05" value="0.1">
+                                <div class="knob-container">
+                                    <div class="knob" id="guitarToneKnob"></div>
+                                    <div class="knob-label">Tone</div>
+                                </div>
+                                <input type="range" id="guitarTone" min="0" max="1" step="0.1" value="0.5">
+                            </div>
+
+                            <!-- Bass Controls -->
+                            <div class="control-group instrument-panel" data-instrument="bass">
+                                <h4>Bass</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="bassDistortionKnob"></div>
+                                    <div class="knob-label">Distortion</div>
+                                </div>
+                                <input type="range" id="bassDistortion" min="0" max="10" step="0.1" value="3">
+                                <div class="knob-container">
+                                    <div class="knob" id="bassSubKnob"></div>
+                                    <div class="knob-label">Sub Bass</div>
+                                </div>
+                                <input type="range" id="bassSub" min="0" max="1" step="0.1" value="0.5">
+                            </div>
+
+                            <!-- Synth Controls -->
+                            <div class="control-group instrument-panel" data-instrument="synth">
+                                <h4>Synth</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="synthWaveformKnob"></div>
+                                    <div class="knob-label">Waveform</div>
+                                </div>
+                                <select id="synthWaveform">
+                                    <option value="sine">Sine</option>
+                                    <option value="square">Square</option>
+                                    <option value="sawtooth">Sawtooth</option>
+                                    <option value="triangle">Triangle</option>
+                                </select>
+                                <div class="knob-container">
+                                    <div class="knob" id="synthFilterKnob"></div>
+                                    <div class="knob-label">Filter</div>
+                                </div>
+                                <input type="range" id="synthFilter" min="20" max="20000" step="10" value="1000">
+                            </div>
+
+                            <!-- Pad Controls -->
+                            <div class="control-group instrument-panel" data-instrument="pad">
+                                <h4>Pad</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="padAttackKnob"></div>
+                                    <div class="knob-label">Attack</div>
+                                </div>
+                                <input type="range" id="padAttack" min="0" max="2" step="0.1" value="0.5">
+                                <div class="knob-container">
+                                    <div class="knob" id="padReleaseKnob"></div>
+                                    <div class="knob-label">Release</div>
+                                </div>
+                                <input type="range" id="padRelease" min="0" max="2" step="0.1" value="1">
+                            </div>
+
+                            <!-- Pluck Controls -->
+                            <div class="control-group instrument-panel" data-instrument="pluck">
+                                <h4>Pluck</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="pluckDecayKnob"></div>
+                                    <div class="knob-label">Decay</div>
+                                </div>
+                                <input type="range" id="pluckDecay" min="0" max="1" step="0.1" value="0.3">
+                                <div class="knob-container">
+                                    <div class="knob" id="pluckFilterKnob"></div>
+                                    <div class="knob-label">Filter</div>
+                                </div>
+                                <input type="range" id="pluckFilter" min="20" max="20000" step="10" value="2000">
+                            </div>
+
+                            <!-- Future Bass Controls -->
+                            <div class="control-group instrument-panel" data-instrument="futureBass">
+                                <h4>Future Bass</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="futureBassLFORateKnob"></div>
+                                    <div class="knob-label">LFO Rate</div>
+                                </div>
+                                <input type="range" id="futureBassLFORate" min="1" max="20" step="0.5" value="6">
+                                <div class="knob-container">
+                                    <div class="knob" id="futureBassLFODepthKnob"></div>
+                                    <div class="knob-label">LFO Depth</div>
+                                </div>
+                                <input type="range" id="futureBassLFODepth" min="1" max="50" step="1" value="20">
+                            </div>
+
+                            <!-- Vocal Chop Controls -->
+                            <div class="control-group instrument-panel" data-instrument="vocalChop">
+                                <h4>Vocal Chop</h4>
+                                <div class="knob-container">
+                                    <div class="knob" id="vocalChopReverbKnob"></div>
+                                    <div class="knob-label">Reverb</div>
+                                </div>
+                                <input type="range" id="vocalChopReverb" min="0" max="0.8" step="0.05" value="0.3">
+                                <select id="vocalChopType">
+                                    <option value="1">Ah</option>
+                                    <option value="2">Eh</option>
+                                    <option value="3">Oh</option>
+                                    <option value="4">Ih</option>
+                                    <option value="5">Uh</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="instrument-keyboard">
+                            <div class="keyboard-container">
+                                <!-- Keyboard will be generated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Synthesizer Tab -->
+                <div class="tab-pane" id="synth-tab">
+                    <div class="synth-section">
+                        <h3>Synthesizer</h3>
+                        
+                        <div class="synth-controls">
+                            <div class="control-group">
+                                <h4>Sound</h4>
+                                <div class="waveform-selector">
+                                    <label for="synthWaveform">Waveform</label>
+                                    <select id="synthWaveform">
+                                        <option value="sine">Sine</option>
+                                        <option value="square">Square</option>
+                                        <option value="sawtooth">Sawtooth</option>
+                                        <option value="triangle">Triangle</option>
+                                    </select>
+                                </div>
+                                <div class="style-selector">
+                                    <label for="synthStyle">Style</label>
+                                    <select id="synthStyle">
+                                        <option value="ambient">Ambient</option>
+                                        <option value="house">House</option>
+                                        <option value="techno">Techno</option>
+                                        <option value="chill">Chill</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Envelope</h4>
+                                <div class="envelope-control">
+                                    <label for="synthAttack">Attack</label>
+                                    <input type="range" id="synthAttack" min="0" max="1" step="0.01" value="0.1">
+                                </div>
+                                <div class="envelope-control">
+                                    <label for="synthDecay">Decay</label>
+                                    <input type="range" id="synthDecay" min="0" max="1" step="0.01" value="0.2">
+                                </div>
+                                <div class="envelope-control">
+                                    <label for="synthSustain">Sustain</label>
+                                    <input type="range" id="synthSustain" min="0" max="1" step="0.01" value="0.5">
+                                </div>
+                                <div class="envelope-control">
+                                    <label for="synthRelease">Release</label>
+                                    <input type="range" id="synthRelease" min="0" max="1" step="0.01" value="0.3">
+                                </div>
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Tools</h4>
+                                <div class="octave-controls">
+                                    <button id="octaveDown">- Oct</button>
+                                    <span id="currentOctave">4</span>
+                                    <button id="octaveUp">+ Oct</button>
+                                </div>
+                                <div class="synth-actions">
+                                    <button id="clearSynth">Clear</button>
+                                    <button id="randomizeSynth">Randomize</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Synth pattern grid with piano keyboard -->
+                        <div class="synth-sequencer">
+                            <div class="piano-container">
+                                <div class="note-labels">
+                                    <div class="note-label" data-note="C5">C5</div>
+                                    <div class="note-label" data-note="B4">B4</div>
+                                    <div class="note-label" data-note="A♯4">A♯4</div>
+                                    <div class="note-label" data-note="A4">A4</div>
+                                    <div class="note-label" data-note="G♯4">G♯4</div>
+                                    <div class="note-label" data-note="G4">G4</div>
+                                    <div class="note-label" data-note="F♯4">F♯4</div>
+                                    <div class="note-label" data-note="F4">F4</div>
+                                    <div class="note-label" data-note="E4">E4</div>
+                                    <div class="note-label" data-note="D♯4">D♯4</div>
+                                    <div class="note-label" data-note="D4">D4</div>
+                                    <div class="note-label" data-note="C♯4">C♯4</div>
+                                    <div class="note-label" data-note="C4">C4</div>
+                                </div>
+                                <div class="piano-keyboard">
+                                    <div class="piano-key white-key" data-note="C5">C5</div>
+                                    <div class="piano-key white-key" data-note="B4">B4</div>
+                                    <div class="piano-key black-key" data-note="A♯4">A♯4</div>
+                                    <div class="piano-key white-key" data-note="A4">A4</div>
+                                    <div class="piano-key black-key" data-note="G♯4">G♯4</div>
+                                    <div class="piano-key white-key" data-note="G4">G4</div>
+                                    <div class="piano-key black-key" data-note="F♯4">F♯4</div>
+                                    <div class="piano-key white-key" data-note="F4">F4</div>
+                                    <div class="piano-key white-key" data-note="E4">E4</div>
+                                    <div class="piano-key black-key" data-note="D♯4">D♯4</div>
+                                    <div class="piano-key white-key" data-note="D4">D4</div>
+                                    <div class="piano-key black-key" data-note="C♯4">C♯4</div>
+                                    <div class="piano-key white-key" data-note="C4">C4</div>
+                                </div>
+                            </div>
+                            <div class="synth-grid"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recording Studio Tab -->
+                <div class="tab-pane" id="recording-tab">
+                    <div class="mic-section">
+                        <h3>Recording Studio</h3>
+                        
+                        <div class="control-panel">
+                            <div class="control-group">
+                                <h4>Microphone</h4>
+                                <div class="mic-controls">
+                                    <button id="startMic">Start Mic</button>
+                                    <button id="stopMic" disabled>Stop Mic</button>
+                                </div>
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Recording</h4>
+                                <div class="recording-controls">
+                                    <button id="startRecording" disabled>Record</button>
+                                    <button id="stopRecording" disabled>Stop</button>
+                                    <div class="status">
+                                        Status: <span id="recordingStatus">Not Recording</span>
+                                        <span class="status-indicator" id="recordingIndicator"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Loop Playback</h4>
+                                <div class="loop-controls">
+                                    <button id="playLoop" disabled>Play Loop</button>
+                                    <button id="stopLoop" disabled>Stop Loop</button>
+                                    <div class="status">
+                                        Loop Length: <span id="loopLength">0</span> beats
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- New Section for Supabase Integration -->
+                            <div class="control-group supabase-test">
+                                <h4>Save Instrument to Database</h4>
+                                <div class="db-test-form">
+                                    <div class="form-group">
+                                        <label for="instrumentName">Instrument Name:</label>
+                                        <input type="text" id="instrumentName" placeholder="Enter instrument name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="instrumentType">Instrument Type:</label>
+                                        <select id="instrumentType">
+                                            <option value="guitar">Guitar</option>
+                                            <option value="bass">Bass</option>
+                                            <option value="piano">Piano</option>
+                                            <option value="drum">Drum</option>
+                                            <option value="synth">Synthesizer</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="instrumentDescription">Description:</label>
+                                        <textarea id="instrumentDescription" placeholder="Describe your instrument"></textarea>
+                                    </div>
+                                    <button id="saveInstrument" class="primary-btn">Save to Database</button>
+                                    <div id="saveStatus" class="save-status"></div>
+                                </div>
+                                <div class="saved-instruments">
+                                    <h5>Saved Instruments</h5>
+                                    <div id="instrumentList">
+                                        <!-- Saved instruments will be listed here -->
+                                        <div class="loading-message">Loading instruments...</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="visualizer">
+                            <canvas id="micVisualizer"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Wobbly Instrument Tab -->
+                <div class="tab-pane" id="wobble-tab">
+                    <div class="wobble-section">
+                        <h3>Wobbly Instrument</h3>
+                        
+                        <div class="control-panel">
+                            <div class="control-group">
+                                <h4>Sound Type</h4>
+                                <select id="wobbleType">
+                                    <option value="bass">Wobbly Bass</option>
+                                    <option value="synth">Synth Lead</option>
+                                    <option value="pad">Ambient Pad</option>
+                                    <option value="pluck">Plucky Synth</option>
+                                </select>
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Effects</h4>
+                                <div class="effect-control">
+                                    <label for="filterCutoff">Filter Cutoff</label>
+                                    <input type="range" id="filterCutoff" min="100" max="10000" step="100" value="2000">
+                                </div>
+                                <div class="effect-control">
+                                    <label for="resonance">Resonance</label>
+                                    <input type="range" id="resonance" min="0" max="20" step="0.5" value="5">
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <h4>LFO</h4>
+                                <div class="effect-control">
+                                    <label for="lfoRate">LFO Rate</label>
+                                    <input type="range" id="lfoRate" min="0.1" max="20" step="0.1" value="5">
+                                </div>
+                                <div class="effect-control">
+                                    <label for="lfoDepth">LFO Depth</label>
+                                    <input type="range" id="lfoDepth" min="0" max="100" step="1" value="50">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="wobble-pad-container">
+                            <div class="wobble-pad-label">Click and drag to play (X = Pitch, Y = Filter)</div>
+                            <canvas id="wobblePad" width="600" height="300"></canvas>
+                            <div class="wobble-pad-info">
+                                <span>Current Key: <span id="currentKey">C Major</span></span>
+                                <span>Current Note: <span id="currentNote">--</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visualize Tab -->
+                <div class="tab-pane" id="visualize-tab">
+                    <div class="visualize-section">
+                        <h3>Sound Visualization</h3>
+                        
+                        <div class="control-panel">
+                            <div class="control-group">
+                                <h4>Visualization Style</h4>
+                                <select id="visualizationStyle">
+                                    <option value="cosmic">Cosmic Waves</option>
+                                    <option value="particles">Particle Symphony</option>
+                                    <option value="geometric">Geometric Pulse</option>
+                                    <option value="liquid">Liquid Harmonics</option>
+                                    <option value="aurora">Aurora Beats</option>
+                                </select>
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Color Theme</h4>
+                                <div class="theme-options">
+                                    <button class="theme-btn active" data-theme="neon">Neon Dreams</button>
+                                    <button class="theme-btn" data-theme="sunset">Sunset Glow</button>
+                                    <button class="theme-btn" data-theme="ocean">Ocean Depths</button>
+                                    <button class="theme-btn" data-theme="galaxy">Galaxy Dust</button>
+                                </div>
+                            </div>
+                            
+                            <div class="control-group">
+                                <h4>Motion</h4>
+                                <div class="effect-control">
+                                    <label for="motionIntensity">Motion Intensity</label>
+                                    <input type="range" id="motionIntensity" min="0" max="100" step="1" value="70">
+                                </div>
+                                <div class="effect-control">
+                                    <label for="particleDensity">Particle Density</label>
+                                    <input type="range" id="particleDensity" min="10" max="500" step="10" value="200">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="visualizer-container">
+                            <canvas id="soundCanvas" width="1000" height="600"></canvas>
+                            <div class="canvas-overlay">
+                                <div class="sound-markers">
+                                    <!-- Markers will be added dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="visualization-info">
+                            <div class="sound-legend">
+                                <h4>Sound Legend</h4>
+                                <div class="legend-items">
+                                    <div class="legend-item">
+                                        <div class="color-dot kick-color"></div>
+                                        <span>Kick Drum</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="color-dot snare-color"></div>
+                                        <span>Snare</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="color-dot hihat-color"></div>
+                                        <span>Hi-hat</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="color-dot bass808-color"></div>
+                                        <span>808 Bass</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="color-dot vocal-color"></div>
+                                        <span>Vocal Chop</span>
+                                    </div>
+                                    <div class="legend-item">
+                                        <div class="color-dot synth-color"></div>
+                                        <span>Synth</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="visualizer.js"></script>
+    <script src="config.js"></script>
+    <script src="supabaseClient.js"></script>
+    <script src="beatMaker.js"></script>
+    <script src="instruments.js"></script>
+    <script src="instrumentsDB.js"></script>
+    <script src="songDB.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html> 

@@ -9,9 +9,10 @@ class Room {
 		this.mobs = [];
 		this.powerUps = [];
 		this.walls = [];
-		this.coins = []; // Added coins array
+		this.coins = [];
+		this.obstacles = []; // Add obstacles array
 
-		// Populate room with mobs, power-ups, and coins
+		// Populate room with mobs, power-ups, coins, and obstacles
 		this.populate();
 	}
 
@@ -27,8 +28,43 @@ class Room {
 		let powerUp = new PowerUp(this.x + 300, this.y + 300, 'bouncyLasers');
 		this.powerUps.push(powerUp);
 
+		// Add obstacles
+		this.generateObstacles();
+
 		// Add coins
 		this.spawnCoin();
+	}
+
+	generateObstacles() {
+		// Create some basic obstacles for the room
+		// Example: Create a platform in the middle
+		let platform = new Obstacle(
+			this.x + this.width/4,
+			this.y + this.height/2,
+			this.width/2,
+			20,
+			'platform'
+		);
+		this.obstacles.push(platform);
+
+		// Add some walls
+		let leftWall = new Obstacle(
+			this.x + 50,
+			this.y + 50,
+			20,
+			this.height - 100,
+			'solid'
+		);
+		this.obstacles.push(leftWall);
+
+		let rightWall = new Obstacle(
+			this.x + this.width - 70,
+			this.y + 50,
+			20,
+			this.height - 100,
+			'solid'
+		);
+		this.obstacles.push(rightWall);
 	}
 
 	spawnCoin() {
@@ -65,10 +101,26 @@ class Room {
 	}
 
 	update() {
-		// Update mobs
+		// Update mobs with obstacle collision
 		for (let i = this.mobs.length - 1; i >= 0; i--) {
 			let mob = this.mobs[i];
+			
+			// Store previous position
+			let prevX = mob.x;
+			let prevY = mob.y;
+			
+			// Update mob position
 			mob.update();
+			
+			// Check collision with obstacles
+			for (let obstacle of this.obstacles) {
+				if (obstacle.intersects(mob.x, mob.y, mob.r)) {
+					// Revert to previous position if collision occurs
+					mob.x = prevX;
+					mob.y = prevY;
+					break;
+				}
+			}
 
 			// Check collision with player
 			let dist = Math.hypot(player.x - mob.x, player.y - mob.y);
@@ -87,6 +139,20 @@ class Room {
 					player.lasers.splice(j, 1);
 					break;
 				}
+			}
+		}
+
+		// Update player position with obstacle collision
+		let prevPlayerX = player.x;
+		let prevPlayerY = player.y;
+		
+		// Check player collision with obstacles
+		for (let obstacle of this.obstacles) {
+			if (obstacle.intersects(player.x, player.y, player.r)) {
+				// Revert to previous position if collision occurs
+				player.x = prevPlayerX;
+				player.y = prevPlayerY;
+				break;
 			}
 		}
 
@@ -137,6 +203,9 @@ class Room {
 	}
 
 	draw(context) {
+		// Draw obstacles first (background)
+		this.obstacles.forEach((obstacle) => obstacle.draw(context));
+
 		// Draw walls
 		this.walls.forEach((wall) => wall.draw(context));
 

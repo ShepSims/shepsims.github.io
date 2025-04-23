@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.tempo-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tempo-control input {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#stopBtn {
+    background-color: #f44336;
+}
+
+#stopBtn:hover {
+    background-color: #d32f2f;
+}
+
+#clearBtn {
+    background-color: #2196F3;
+}
+
+#clearBtn:hover {
+    background-color: #0b7dda;
+}
+
+.beat-grid {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 5px;
+    margin: 20px 0;
+}
+
+.beat-cell {
+    aspect-ratio: 1;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.beat-cell.active {
+    background-color: #4CAF50;
+}
+
+.beat-cell.current {
+    background-color: #2196F3;
+}
+
+.sound-selector {
+    text-align: center;
+    margin: 20px 0;
+}
+
+select {
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+} 
