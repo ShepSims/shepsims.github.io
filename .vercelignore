@@ -1,0 +1,6 @@
+.git
+.vscode
+.expo
+skinswap.vectornator
+**/.DS_Store
+**/node_modules
