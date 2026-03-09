@@ -1,0 +1,3 @@
+# Exclude vendored dependencies from Jekyll processing
+newSite/song-builder/node_modules/
+**/node_modules/
