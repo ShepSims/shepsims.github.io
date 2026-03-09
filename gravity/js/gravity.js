@@ -303,6 +303,6 @@ function keyPressed() {
 	}
 }
 function mouseWheel(event) {
-	window.location.href = '..../groceries/html/groceries.html';
+	window.location.href = '../../groceries/html/groceries.html';
 	//copy(get(), 0, 0, width + event.delta / abs(event.delta), height, event.delta / abs(event.delta), 0, width, height);
 }
