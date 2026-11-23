@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Building a Pocket-Sized Dungeon Crawler</title><meta name="description" content="Notes on building a mobile-first dungeon crawler with creature collection, procedural rooms, and cooperative play.">
+<style> :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#121212;color:#e7e7e7;font:17px/1.8 system-ui,-apple-system,sans-serif}main{max-width:780px;margin:auto;padding:72px 24px 100px}a{color:#c4a4ff}header a{text-decoration:none}h1{font-size:clamp(2.3rem,7vw,4rem);line-height:1.13;letter-spacing:-.04em;margin:36px 0 14px}h2{font-size:1.55rem;margin-top:2.4em;line-height:1.3}p{margin:1.25em 0}.meta{color:#aaa;font-size:.9rem}.intro{font-size:1.2rem;color:#c9c9c9}blockquote{border-left:3px solid #a782eb;margin:2em 0;padding:0 1.2em;color:#ddd}footer{margin-top:5rem;border-top:1px solid #333;padding-top:1.5rem}</style></head>
+<body><main><header><a href="./index.html">← Back to the blog</a></header><article>
+<p class="meta">November 23, 2026 · Development journal</p>
+<h1>Building a Pocket-Sized Dungeon Crawler</h1>
+<p class="intro">I've been experimenting with a mobile-first action game that mixes fast room-based combat, creature collection, and the feeling that every run might lead somewhere unexpected.</p>
+<h2>Starting with the feel</h2>
+<p>The first goal wasn't a sprawling world or an elaborate progression system. It was getting a character moving on a phone and making the basic loop enjoyable: enter a room, dodge incoming threats, aim a shot, clear the encounter, and decide where to go next. If those few seconds aren't satisfying, adding more systems won't save the game.</p>
+<p>Touch controls have been a surprisingly large part of the work. Two virtual sticks handle movement and firing, while a separate charged ability adds a deliberate, higher-impact decision. The controls need to appear naturally under your thumbs, stay out of each other's way, and work on a screen with cutouts and browser chrome. Small positioning errors become obvious the moment you actually play.</p>
+<h2>Rooms that create decisions</h2>
+<p>The dungeon is built around connected rooms, doors, and a small map. Some rooms are fights; others offer a moment to choose a route or prepare for what's next. The player needs to enter through the correct doorway, understand where they are, and never lose their bearings during a transition.</p>
+<p>Boss encounters shift the framing to make the confrontation feel different. That sounds straightforward until a mobile browser has to accommodate orientation changes, screen dimensions, and touch targets without breaking immersion. Much of the engineering has been in those seams between moments rather than the moments themselves.</p>
+<h2>Collecting companions, not just defeating enemies</h2>
+<p>I also wanted encounters to offer something beyond a health bar disappearing. Creatures can become companions, turning a combat encounter into a possible addition to your party. The interesting design question is how to make companions feel distinct and useful without turning the screen into an unreadable crowd.</p>
+<p>Positioning, spacing, and the relationship between a companion's behavior and the player's actions matter as much as the collection mechanic. A companion should change how a run feels, not simply follow behind as decoration.</p>
+<h2>Making each run different</h2>
+<p>The longer-term direction is a system of upgrades and modifiers that can combine in unexpected ways: different projectile patterns, targeting behaviors, area effects, drops, and collectible visual variations. The fun comes from discovering combinations, not just watching a number increase.</p>
+<p>Persistent progress is another piece of the puzzle. A run should be worth playing on its own, but the player should also have a reason to come back. I'm exploring ways for discoveries and upgrades to carry forward while keeping individual runs unpredictable.</p>
+<h2>Building for the device in your hand</h2>
+<p>One of the biggest lessons has been that a mobile game isn't just a desktop game shrunk down. The browser's navigation bars, safe areas, orientation, touch input, and performance characteristics all influence the design. Multiplayer introduces another layer: an encounter that feels smooth alone can behave very differently when two devices are sharing the same world.</p>
+<blockquote>The challenge isn't adding features. It's making movement, combat, transitions, and progression feel like one coherent experience.</blockquote>
+<h2>What's next</h2>
+<p>I'm focusing on making the core dungeon loop deeper before expanding the world: clearer room transitions, more satisfying upgrades, meaningful rewards, and reliable saves. Cooperative play and a world that develops through exploration are exciting directions, but they only matter if the fundamentals are fun.</p>
+<p>This is still an experiment, and that's part of the appeal. Each iteration reveals a new design constraint, a new technical problem, or a small interaction that makes the whole thing click.</p>
+</article><footer><a href="./index.html">← More writing</a></footer></main></body></html>
